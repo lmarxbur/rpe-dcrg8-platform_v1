@@ -16,7 +16,7 @@ AWS serverless telemetry pipeline that collects power quality and energy data fr
 | Libraries | pymodbus, boto3 |
 
 ## Architecture Summary
-The system is a single AWS Lambda function triggered by EventBridge on a schedule. It connects to one or more DCRG8 devices, reads Modbus registers (input and holding), computes power factor metrics and cost savings, then writes timestamped JSON records to S3. Downstream services (Glue, Athena, QuickSight) provide ETL, querying, and visualization.
+The system is a single AWS Lambda function triggered by EventBridge on a schedule. It connects to one or more DCRG8 devices, reads Modbus registers (input and holding), computes power factor metrics, then writes timestamped JSON records to S3. Downstream services (Glue, Athena, QuickSight) provide ETL, querying, and visualization.
 
 ## Project Structure
 ```
@@ -30,7 +30,6 @@ rpe-dcrg8-platform_v1/
 - **Single-function architecture**: One Lambda function handles all telemetry collection
 - **Event-driven**: Triggered by EventBridge scheduler
 - **Industrial IoT**: Communicates with physical power factor controllers
-- **Financial analytics**: Calculates power factor cost savings and annualized savings
 - **Multi-device**: Supports polling multiple DCRG8 devices per invocation
 
 ## Cross-References
