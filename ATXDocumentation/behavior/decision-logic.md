@@ -1,4 +1,5 @@
 > ⚠️ **Early Access**: Behavior documentation is in early access. Please review critically.
+> ⚠️ **Early Access**: Behavior documentation is in early access. Please review critically.
 
 # Decision Logic
 
