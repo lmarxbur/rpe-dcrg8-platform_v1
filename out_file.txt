@@ -1,0 +1,130 @@
+{'address': '0000H', 'words': '2', 'desc_it': 'Cos phi / Cos phi totale', 'desc_en': 'Cos phi / Total Cos phi', 'scale': 'Value/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0002H', 'words': '2', 'desc_it': 'Sen phi / ND', 'desc_en': 'Sen phi NA', 'scale': 'Value/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0004H', 'words': '2', 'desc_it': 'Tan phi / ND', 'desc_en': 'Tan phi NA', 'scale': 'Value/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0006H', 'words': '2', 'desc_it': 'Tensione / Tensione Equivalente', 'desc_en': 'Voltage / Equivalent Voltage', 'scale': 'V/10', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0008H', 'words': '2', 'desc_it': 'Corrente / Corrente Equivalente', 'desc_en': 'Current / Equivalent Current', 'scale': 'A/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '000AH', 'words': '2', 'desc_it': 'Potenza Reattiva / ND', 'desc_en': 'Reactive Power / NA', 'scale': 'Var', 'format': 'Signed long', 'bytes': '4'}
+{'address': '000CH', 'words': '2', 'desc_it': 'ND / Potenza Reattiva 1', 'desc_en': 'NA / Reactive Power 1', 'scale': 'Var', 'format': 'Signed long', 'bytes': '4'}
+{'address': '000EH', 'words': '2', 'desc_it': 'ND / Potenza Reattiva 2', 'desc_en': 'NA / Reactive Power 2', 'scale': 'Var', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0010H', 'words': '2', 'desc_it': 'ND / Potenza Reattiva 3', 'desc_en': 'NA / Reactive Power 3', 'scale': 'Var', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0012H', 'words': '2', 'desc_it': 'Delta Var / Delta Var', 'desc_en': 'Delta Var / Delta Var', 'scale': 'Var', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0016H', 'words': '2', 'desc_it': 'Energia attiva totale importata', 'desc_en': 'Total imported active energy', 'scale': 'kWh/10', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '0018H', 'words': '2', 'desc_it': 'Energia reattiva induttiva totale', 'desc_en': 'Total inductive reactive energy', 'scale': 'kVarh/10', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '001AH', 'words': '2', 'desc_it': 'Energia apparente totale', 'desc_en': 'Total apparent energy', 'scale': 'kVA/10', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '001CH', 'words': '2', 'desc_it': 'Energia attiva totale esportata', 'desc_en': 'Total exported active energy', 'scale': 'kWh/10', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '001EH', 'words': '2', 'desc_it': 'Energia reattiva capacitiva totale', 'desc_en': 'Total capacitive reactive energy', 'scale': 'kVarh/10', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '0040H', 'words': '2', 'desc_it': 'ND / Tensione L1', 'desc_en': 'NA / L1 Voltage', 'scale': 'V/10', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0042H', 'words': '2', 'desc_it': 'ND / Tensione L2', 'desc_en': 'NA / L2 Voltage', 'scale': 'V/10', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0044H', 'words': '2', 'desc_it': 'ND / Tensione L3', 'desc_en': 'NA / L3 Voltage', 'scale': 'V/10', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0046H', 'words': '2', 'desc_it': 'ND / Corrente L1', 'desc_en': 'NA / L1 Current', 'scale': 'A/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0048H', 'words': '2', 'desc_it': 'ND / Corrente L2', 'desc_en': 'NA / L2 Current', 'scale': 'A/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '004AH', 'words': '2', 'desc_it': 'ND / Corrente L3', 'desc_en': 'NA / L3 Current', 'scale': 'A/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '004CH', 'words': '2', 'desc_it': 'ND / Tensione L1-L2', 'desc_en': 'NA / L1-L2 Voltage', 'scale': 'V/10', 'format': 'Signed long', 'bytes': '4'}
+{'address': '004EH', 'words': '2', 'desc_it': 'ND / Tensione L2-L3', 'desc_en': 'NA / L2-L3 Voltage', 'scale': 'V/10', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0050H', 'words': '2', 'desc_it': 'ND / Tensione L3-L1', 'desc_en': 'NA / L3-L1 Voltage', 'scale': 'V/10', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0052H', 'words': '2', 'desc_it': 'ND / Cos phi 1', 'desc_en': 'NA / Cos phi 1', 'scale': 'Value/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0054H', 'words': '2', 'desc_it': 'ND / Cos phi 2', 'desc_en': 'NA / Cos phi 2', 'scale': 'Value/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0056H', 'words': '2', 'desc_it': 'ND / Cos phi 3', 'desc_en': 'NA / Cos phi 3', 'scale': 'Value/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0058H', 'words': '2', 'desc_it': 'ND / Sen phi 1', 'desc_en': 'NA / Sen phi 1', 'scale': 'Value/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '005AH', 'words': '2', 'desc_it': 'ND / Sen phi 2', 'desc_en': 'NA / Sen phi 2', 'scale': 'Value/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '005CH', 'words': '2', 'desc_it': 'ND / Sen phi 3', 'desc_en': 'NA / Sen phi 3', 'scale': 'Value/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '005EH', 'words': '2', 'desc_it': 'ND / Tan phi 1', 'desc_en': 'NA / Tan phi 1', 'scale': 'Value/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0060H', 'words': '2', 'desc_it': 'ND / Tan phi 2', 'desc_en': 'NA / Tan phi 2', 'scale': 'Value/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '0062H', 'words': '2', 'desc_it': 'ND / Tan phi 3', 'desc_en': 'NA / Tan phi 3', 'scale': 'Value/1000', 'format': 'Signed long', 'bytes': '4'}
+{'address': '1500H', 'words': '2', 'desc_it': 'Potenza Attiva / ND', 'desc_en': 'Active Power / NA', 'scale': 'W', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '1502H', 'words': '2', 'desc_it': 'ND / Potenza Attiva 1', 'desc_en': 'NA / Active Power 1', 'scale': 'W', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '1504H', 'words': '2', 'desc_it': 'ND / Potenza Attiva 2', 'desc_en': 'NA / Active Power 2', 'scale': 'W', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '1506H', 'words': '2', 'desc_it': 'ND / Potenza Attiva 3', 'desc_en': 'NA / Active Power 3', 'scale': 'W', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '1508H', 'words': '2', 'desc_it': 'Potenza Apparente / ND', 'desc_en': 'Apparent Power / NA', 'scale': 'VA', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '150AH', 'words': '2', 'desc_it': 'ND / Potenza Apparente 1', 'desc_en': 'NA / Apparent Power 1', 'scale': 'VA', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '150CH', 'words': '2', 'desc_it': 'ND / Potenza Apparente 2', 'desc_en': 'NA / Apparent Power 2', 'scale': 'VA', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '150EH', 'words': '2', 'desc_it': 'ND / Potenza Apparente 3', 'desc_en': 'NA / Apparent Power 3', 'scale': 'VA', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '1300H', 'words': '2', 'desc_it': '0<= <= 31', 'desc_en': 'Potenza reattiva step i', 'scale': 'Reactive Power Step i', 'format': 'kVar/100', 'bytes': 'Unsigned long'}
+{'address': '1200H', 'words': '2', 'desc_it': 'Tempo inserzione step i', 'desc_en': 'Insertion Time Step i', 'scale': 'Sec', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '1100H', 'words': '2', 'desc_it': 'Numero inserzioni step i', 'desc_en': 'Insertion Count Step i', 'scale': '-', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '2001H', 'words': '1', 'desc_it': 'Flag CAP-IND Corrente / ND', 'desc_en': 'Current CAP-IND Flag / ND', 'scale': '0 = CAP / 1 = IND', 'format': 'Unsigned short', 'bytes': '4'}
+{'address': '2002H', 'words': '1', 'desc_it': 'ND / Flag CAP-IND Corrente 1', 'desc_en': 'ND / Current 1 CAP-IND Flag', 'scale': '0 = CAP / = IND', 'format': 'Unsigned short', 'bytes': '4'}
+{'address': '2003H', 'words': '1', 'desc_it': 'ND / Flag CAP-IND Corrente 2', 'desc_en': 'ND / Current 2 CAP-IND Flag', 'scale': '0 = CAP / 1 = IND', 'format': 'Unsigned short', 'bytes': '4'}
+{'address': '2004H', 'words': '1', 'desc_it': 'ND / Flag CAP-IND Corrente 3', 'desc_en': 'ND / Current 3 CAP-IND Flag', 'scale': '0 = CAP / 1 = IND', 'format': 'Unsigned short', 'bytes': '4'}
+{'address': '2005H', 'words': '1', 'desc_it': 'PF medio sttimanale', 'desc_en': 'Average weekly PF', 'scale': '/1000', 'format': 'Unsigned short', 'bytes': '4'}
+{'address': '2110H', 'words': '1', 'desc_it': '0<= <= 31', 'desc_en': 'Stato Step', 'scale': 'Step Status', 'format': '1 = step ins.', 'bytes': '3 = step moving'}
+{'address': '202AH', 'words': '1', 'desc_it': 'Temperatura °C/°F', 'desc_en': 'Temperature °C/°F', 'scale': 'Value/10', 'format': 'Signed short', 'bytes': '4'}
+{'address': '202BH', 'words': '1', 'desc_it': 'Temperatura massima °C/°F', 'desc_en': 'Max Temperature °C/°F', 'scale': 'Value/10', 'format': 'Signed short', 'bytes': '4'}
+{'address': '2C00H', 'words': '1', 'desc_it': '(i+2)° armonica di tensione L1', 'desc_en': '(i+2)° L1 harmonic voltage', 'scale': 'Value/10', 'format': 'Unsigned short', 'bytes': '4'}
+{'address': '2C20H', 'words': '1', 'desc_it': 'THD di Tensione L1', 'desc_en': 'L1 voltage THD', 'scale': 'Value/10', 'format': 'Unsigned short', 'bytes': '4'}
+{'address': '2C30H', 'words': '1', 'desc_it': '(i+2)° armonica di tensione L2', 'desc_en': '(i+2)° L2 harmonic voltage', 'scale': 'Value/10', 'format': 'Unsigned short', 'bytes': '4'}
+{'address': '2C50H', 'words': '1', 'desc_it': 'THD di Tensione L2', 'desc_en': 'L2 voltage THD', 'scale': 'Value/10', 'format': 'Unsigned short', 'bytes': '4'}
+{'address': '2C60H', 'words': '1', 'desc_it': '0<= <= 29', 'desc_en': '(i+2)° armonica di tensione L3', 'scale': '(i+2)° L3 harmonic voltage', 'format': 'Value/10', 'bytes': 'Unsigned short'}
+{'address': '2C80H', 'words': '1', 'desc_it': 'THD di Tensione L3', 'desc_en': 'L3 voltage THD', 'scale': 'Value/10', 'format': 'Unsigned short', 'bytes': '4'}
+{'address': '2C90H', 'words': '1', 'desc_it': '0<= <= 29', 'desc_en': '(i+2)° armonica di corrente L1', 'scale': '(i+2)° L1 harmonic current', 'format': 'Value/10', 'bytes': 'Unsigned integer'}
+{'address': '2CB0H', 'words': '1', 'desc_it': 'THD di corrente L1', 'desc_en': 'L1 current THD', 'scale': 'Value/10', 'format': 'Unsigned integer', 'bytes': '4'}
+{'address': '2CC0H', 'words': '1', 'desc_it': '0<= <= 29', 'desc_en': '(i+2)° armonica di corrente L2', 'scale': '(i+2)° L2 harmonic current', 'format': 'Value/10', 'bytes': 'Unsigned integer'}
+{'address': '2CE0H', 'words': '1', 'desc_it': 'THD di corrente L2', 'desc_en': 'L2 current THD', 'scale': 'Value/10', 'format': 'Unsigned integer', 'bytes': '4'}
+{'address': '2CF0H', 'words': '1', 'desc_it': '(i+2)° Armonica di corrente L3', 'desc_en': '(i+2)° L3 harmonic current', 'scale': 'Value/10', 'format': '0<= <= 29', 'bytes': 'Unsigned integer'}
+{'address': '2D10H', 'words': '1', 'desc_it': 'THD di corrente L3', 'desc_en': 'L3 current THD', 'scale': 'Value/10', 'format': 'Unsigned integer', 'bytes': '4'}
+{'address': '2D20H', 'words': '1', 'desc_it': '0<= <= 29', 'desc_en': '(i+2)° armonica di tensione L1-L2', 'scale': '(i+2)° L1-L2 harmonic voltage', 'format': 'Value/10', 'bytes': 'Unsigned integer'}
+{'address': '2D50H', 'words': '1', 'desc_it': '0<= <= 29', 'desc_en': '(i+2)° armonica di tensione L2-L3', 'scale': '(i+2)° L2-L3 harmonic voltage', 'format': 'Value/10', 'bytes': 'Unsigned integer'}
+{'address': '2D70H', 'words': '1', 'desc_it': 'THD di Tensione L2-L3', 'desc_en': 'L2-L3 voltage THD', 'scale': 'Value/10', 'format': 'Unsigned integer', 'bytes': '4'}
+{'address': '2DA0H', 'words': '1', 'desc_it': 'THD di Tensione L3-L1', 'desc_en': 'L3-L1 voltage THD', 'scale': 'Value/10', 'format': 'Unsigned integer', 'bytes': '4'}
+{'address': '1A80H', 'words': '2', 'desc_it': 'Contatore 1', 'desc_en': 'Counter 1', 'scale': '/1', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '1A82H', 'words': '2', 'desc_it': 'Contatore 2', 'desc_en': 'Counter 2', 'scale': '/1', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '1A84H', 'words': '2', 'desc_it': 'Contatore 3', 'desc_en': 'Counter 3', 'scale': '/1', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '1A86H', 'words': '2', 'desc_it': 'Contatore 4', 'desc_en': 'Counter 4', 'scale': '/1', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '1A88H', 'words': '2', 'desc_it': 'Contatore 5', 'desc_en': 'Counter 5', 'scale': '/1', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '1A8AH', 'words': '2', 'desc_it': 'Contatore 6', 'desc_en': 'Counter 6', 'scale': '/1', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '1A8CH', 'words': '2', 'desc_it': 'Contatore 7', 'desc_en': 'Counter 7', 'scale': '/1', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '1A8EH', 'words': '2', 'desc_it': 'Contatore 8', 'desc_en': 'Counter 8', 'scale': '/1', 'format': 'Unsigned long', 'bytes': '4'}
+{'address': '2DC0H', 'words': '1', 'desc_it': 'Limite 1', 'desc_en': 'Limit 1', 'scale': '/1', 'format': 'Unsigned integer', 'bytes': '4'}
+{'address': '2DCFH', 'words': '1', 'desc_it': 'Limite 16', 'desc_en': 'Limit 16', 'scale': '/1', 'format': 'Unsigned integer', 'bytes': '4'}
+{'address': '2DE0H', 'words': '1', 'desc_it': 'Ingresso 1', 'desc_en': 'Input 1', 'scale': '/1', 'format': 'Unsigned integer', 'bytes': '4'}
+{'address': '2DE7H', 'words': '1', 'desc_it': 'Ingresso 8', 'desc_en': 'Input 8', 'scale': '/1', 'format': 'Unsigned integer', 'bytes': '4'}
+{'address': '2DF0H', 'words': '1', 'desc_it': 'Uscita 1', 'desc_en': 'Output 1', 'scale': '/1', 'format': 'Unsigned integer', 'bytes': '4'}
+{'address': '2DF7H', 'words': '1', 'desc_it': 'Uscita 16', 'desc_en': 'Output 16', 'scale': '/1', 'format': 'Unsigned integer', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Azzera energia parziale', 'desc_en': 'Reset Partial Energy', 'scale': '1', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Azzera contatori', 'desc_en': 'Reset External counter', 'scale': '2', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Azzera limiti', 'desc_en': 'Reset Limits', 'scale': '3', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Azzera temp. massima', 'desc_en': 'Reset max temperatue', 'scale': '4', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Azzera sovraccarico condensatori', 'desc_en': 'Reset capacitor overload', 'scale': '5', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Azzera tempi inserzione condensatori', 'desc_en': 'Reset step insertion time', 'scale': '6', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Azzera manovre condensatori', 'desc_en': 'Reset step insertion count', 'scale': '7', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Azzera Step trimming', 'desc_en': 'Reset Step trimming', 'scale': '8', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Ripristina modalità test', 'desc_en': 'Restore test mode', 'scale': '10', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Azzera memoria eventi', 'desc_en': 'Reset events log', 'scale': '11', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Setup a default', 'desc_en': 'Setup to default', 'scale': '12', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Salva copia setup', 'desc_en': 'Backup parameters', 'scale': '13', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Ripristina setup', 'desc_en': 'Restore parameters', 'scale': '14', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Azzera TPF settimanale', 'desc_en': 'Reset week TPF', 'scale': '15', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Azzera manutenzione 1', 'desc_en': 'Reset maintenance 1', 'scale': '16', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Azzera manutenzione 2', 'desc_en': 'Reset maintenance 2', 'scale': '17', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '2FF0H', 'words': '1', 'desc_it': 'Azzera manutenzione 3', 'desc_en': 'Reset maintenance 3', 'scale': '18', 'format': 'Unsigned int', 'bytes': '4'}
+{'address': '3005H', 'words': '1', 'desc_it': 'Attivazione di uno step', 'desc_en': 'Step activation', 'scale': 'Unsigned int', 'format': '4', 'bytes': '3006H'}
+{'address': '5030H', 'words': '1', 'desc_it': 'PUNTATORE EVENTI', 'desc_en': 'EVENTS POINTER', 'scale': 'Unsigned', 'format': "Indica l'ultimo evento registrato (LSB) / CONTATORE EVENTI", 'bytes': 'Last event stored (LSB)/ EVENTS COUNTER'}
+{'address': '5032H', 'words': '43', 'desc_it': 'Descrizione Evento nella lingua corrente', 'desc_en': 'Event description using current language', 'scale': 'Unsigned', 'format': 'integer', 'bytes': 'Procedura per la lettura degli eventi'}
+{'address': '5030H', 'words': '1 Reading of event counter and pointer with function 04 from address 5030H', 'desc_it': '2 Il contatore è nel MSB del valore restituito, il puntatore nel LSB', 'desc_en': '2 The counter is in the MSB of the return value, the pointer to the LSB', 'scale': "3 Scrittura con funzione 06 del numero di evento desiderato, scrivendolo all'indirizzo", 'format': '3 Writing with 06 function of the number of desired event, writing to the address', 'bytes': '5030H'}
+{'address': '5030H', 'words': "4 Lettura del testo dell'evento con funzione 04, dall'indirizzo 5032H per 43 registri", 'desc_it': '4 Read of the text of the event with function 04, 43 registers from address 5032H', 'desc_en': '5 - Vengono ritornati 86 byte: i primi 10 sono la data, 1=separatore, dal 12 fino al 19 ora,', 'scale': '5 86 bytes are returned: the first 10 are the date, 11 separator, from 12 to 19', 'format': '20=separatore, dal 21.mo alla fine testo evento', 'bytes': 'hour, 20 separator, from 21.st to the end = event text'}
+{'address': '1400H', 'words': '2', 'desc_it': 'STATO ALLARMI', 'desc_en': 'ALARM STATUS', 'scale': 'Unsigned long', 'format': '4', 'bytes': 'Lovato'}
+{'address': '28F0H', 'words': '1', 'desc_it': 'Anno', 'desc_en': 'Year', 'scale': '2000..2099', 'format': '4', 'bytes': '28F1H'}
+{'address': '28F2H', 'words': '1', 'desc_it': 'Giorno', 'desc_en': 'Day', 'scale': '1-31', 'format': '4', 'bytes': '28F3H'}
+{'address': '28F4H', 'words': '1', 'desc_it': 'Minuti', 'desc_en': 'Minutes', 'scale': '0-59', 'format': '4', 'bytes': '28F5H'}
+{'address': '28FAH', 'words': '1', 'desc_it': 'Valore 01h: Salvataggio impostazione orologio', 'desc_en': '4', 'scale': 'Value 01H: Save real time clock setting', 'format': 'datario', 'bytes': 'TABELLA 9:'}
+{'address': '2F00H', 'words': '1', 'desc_it': 'Valore 01h: Modalita Manuale', 'desc_en': 'Valore 01h:Manual Mode', 'scale': 'Valore 02h: Modallita Automatica', 'format': 'Valore 02h: Automatic Mode', 'bytes': 'Valore 01h: Salvataggio eeprom'}
+{'address': '2F03H', 'words': 'Valore 02H: Salvataggio Fram', 'desc_it': 'Valore 02H: Fram save', 'desc_en': '4', 'scale': '1', 'format': 'Valore 04H: Salvataggio fram e reboot', 'bytes': 'Value 04h: Fram save and reboot'}
+{'address': '2F07H', 'words': 'Valore 01h: Reset apparecchio con salvataggio in fram', 'desc_it': 'Value 01h: Reset device and save Fram', 'desc_en': '28FAH', 'scale': '1', 'format': 'Valore 01h: Salvataggio impostazione orologio datario', 'bytes': 'Value 01H: Save real time clock setting'}
+{'address': '5000H', 'words': 'read by using the function 6 at address', 'desc_it': '2.', 'desc_en': 'Scrivere il valore del sottomenu (se esiste) che', 'scale': '5000HO.', 'format': 'si vuole leggere tramite la funzione 6', 'bytes': '2.'}
+{'address': '5001H', 'words': 'that you want to read by using the function 6', 'desc_it': '3.', 'desc_en': 'Scrivere il valore del parametro che si vuole', 'scale': 'at address 5001HO.', 'format': "leggere tramite la funzione 6 all'indirizzo", 'bytes': '3.'}
+{'address': '5002H', 'words': 'to read by using the function 6 at address', 'desc_it': '4.', 'desc_en': "Eseguire la funzione 4 all'indirizzo 5004H, di", 'scale': '5002HO', 'format': 'un numero di registri appropriato alla', 'bytes': '4.'}
+{'address': '5004H', 'words': 'lunghezza del parametro vedi tabella).', 'desc_it': 'with a number of registers appropriate to the', 'desc_en': '5.', 'scale': 'Se si vuole leggere il parametro successivo,', 'format': 'length of the parameter (see table).', 'bytes': "(all'interno dello stesso menu/sottomenu)"}
+{'address': '5000H', 'words': 'change by using the function 6 at address', 'desc_it': '2.', 'desc_en': 'Scrivere il valore del sottomenu (se esiste) che', 'scale': '5000HO', 'format': 'si vuole modificare tramite la funzione 6', 'bytes': '2.'}
+{'address': '5001H', 'words': 'that you want to change by using the function', 'desc_it': '3.', 'desc_en': 'Scrivere il valore parametro che si vuole', 'scale': '6 at address 5001HO', 'format': "modificare tramite la funzione 6 all'indirizzo", 'bytes': '3.'}
+{'address': '5002H', 'words': 'to change by using the function 6 at address', 'desc_it': '4.', 'desc_en': "Eseguire la funzione 16 all'indirizzo 5004H, di", 'scale': '5001HO', 'format': 'un numero di registri appropriato alla', 'bytes': '4.'}
+{'address': '5004H', 'words': 'lunghezza del parametro.', 'desc_it': 'with a number of registers appropriate to the', 'desc_en': '5.', 'scale': 'Se si vuole scrivere il parametro successivo,', 'format': 'length of the parameter', 'bytes': "all'interno dello stesso menu/sottomenu"}
+{'address': '2F03H', 'words': '2F03H) e poi successivamente il valore 04', 'desc_it': 'then write value 04 again at address 2F03H.', 'desc_en': "sempre all'indirizzo 2F03H.", 'scale': 'TIPO DI PARAMETRO', 'format': 'NUMERO', 'bytes': 'REGISTRI'}
+{'address': '5000H', 'words': 'e 5002H utilizzando la funzione 4', 'desc_it': "It's 'possible to read the menu, submenus, and", 'desc_en': 'parameter stored at the addresses 5000H, 5001H', 'scale': 'Vedere esempio seguente', 'format': 'and 5002H by using the function 4', 'bytes': 'See the following example'}
+{'address': '5000H', 'words': 'Valore / Value', 'desc_it': '= 2 (02H)', 'desc_en': '01', 'scale': '06', 'format': '4F', 'bytes': 'FF'}
+{'address': '5000H', 'words': 'Valore Value', 'desc_it': '= 4 (04H)', 'desc_en': '01', 'scale': '06', 'format': '4F', 'bytes': 'FF'}
+{'address': '5002H', 'words': 'Valore / Value', 'desc_it': '= (01H)', 'desc_en': '01', 'scale': '06', 'format': '50', 'bytes': '01'}
+{'address': '5002H', 'words': 'Valore Value', 'desc_it': '= 2 (02H)', 'desc_en': '01', 'scale': '06', 'format': '50', 'bytes': '01'}
+{'address': '5004H', 'words': 'Nr. registri / Nr. register = 1 (01H)', 'desc_it': 'Nr. byte / Nr. bytes', 'desc_en': '= 2 (02H)', 'scale': 'Valore / Value', 'format': '= 200 (000000C8H)', 'bytes': '01'}
+{'address': '5004H', 'words': 'Valore / Value', 'desc_it': '= 2 (02H)', 'desc_en': '01', 'scale': '10', 'format': '50', 'bytes': '03'}
+{'address': '2F03H', 'words': 'Valore Value', 'desc_it': '= 1 (01H)', 'desc_en': '01', 'scale': '6', 'format': '2F', 'bytes': '02'}
+{'address': '2F03H', 'words': 'Valore Value', 'desc_it': '= 4 (04H)', 'desc_en': '01', 'scale': '6', 'format': '2F', 'bytes': '02'}

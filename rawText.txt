@@ -1,0 +1,2574 @@
+
+Lovato
+I
+GB
+electric
+SERIE DCRG8
+DCRG8 SERIES
+LOVATO ELECTRIC S.P.A.
+24020 GORLE (BERGAMO) ITALIA
+VIA DON E. MAZZA, 12
+PROTOCOLLO DI COMUNICAZIONE
+MODBUS® COMMUNICATION PROTOCOL
+I432IGB05_20
+TEL. 035 4282111
+MODBUS®
+TELEFAX (Nazionale): 035 4282200
+TELEFAX (International): 035 4282400
+Web www.LovatoElectric.com
+E-mail info@LovatoElectric.com
+PROTOCOLLO MODBUS®
+MODBUS® PROTOCOL
+La centralina di rifasamento DCRG8 supporta i protocolli
+The digital power factor controller DCRG8 supports the
+di comunicazione Modbus RTU® e Modbus ASCII® sulla
+communication protocols Modbus RTU® and Modbus
+porta seriale RS-485.
+ASCII® on the RS-485 serial port.
+La centralina di rifasamento DCRG8 supporta i protocolli
+The digital power factor controller DCRG8 support the
+di comunicazione Modbus RTU® e Modbus ASCII® sui
+communication protocols Modbus RTU® and Modbus
+moduli di espansione:
+ASCII® on the expansion modules:
+EXP 10 10
+USB
+EXP 10
+USB
+EXP 11
+RS232
+EXP 11 RS232
+EXP 12
+RS485
+EXP 1012 RS485
+EXP 10 13
+Ethernet
+EXP 13 Ethernet
+Grazie a questa funzione e' possibile leggere lo stato
+Using this function it is possible to read the device
+degli apparecchi e controllare gli stessi tramite il software
+status and to control the units through the dedicated
+di controllo remoto dedicato (DCRJ remote control),
+Remote control software (DCRJ remote control), third-
+software di supervisione standard forniti da terze parti
+party supervision software (SCADA) or through other
+(SCADA) oppure tramite apparecchiature dotate di
+intelligent devices supporting Modbus®, like PLCs.
+interfaccia Modbus® quali PLC e terminali intelligenti.
+IMPOSTAZIONE DEI PARAMETRI
+PARAMETER SETTING
+Per configurare il protocollo Modbus®, accedere al
+To configure the Modbus® protocol, enter SETUP
+SETUP MENU e selezionare il menu M16.
+MENU and choose the M16 menu:
+E' possibile configurare 2 moduli di espansione (n=1..2).
+It is possible to configure 2 different expansion modules
+(n=1..2).
+MENU M16 COMUNICAZIONE SERIALE
+PAR
+Funzione
+Range
+Default
+MENU M16 SERIAL COMMUNICATION
+P16.n.01
+Indirizzo
+1..245
+1
+PAR
+Function
+Range
+Default
+P16.n.01
+Address
+1..245
+1
+P16.n.02
+Velocità
+1200
+9600
+RS-232
+2400
+baud
+P16.n.02
+RS-232
+1200
+9600
+(baud)
+4800
+Baud
+2400
+baud
+9600
+Rate
+4800
+19200
+9600
+38400
+19200
+57600
+38400
+115200
+57600
+P16.n.03
+Formato dati
+8 bit Nessuna
+8 bit
+115200
+8 bit Dispari
+Nessuna
+P16.n.03
+Data
+8 bit None
+8 bit None
+8 bit Pari
+format
+8 bit Odd
+7 bit Dispari
+8 bit Even
+7 bit Pari
+7 bit Odd
+P16.n.04
+Stop bit
+1
+1
+7 bit Even
+2
+P16.n.04
+Stop bit
+1
+1
+P16.n.05
+Protocollo
+Modbus RTU
+Modbus
+2
+Modbus ASCII
+RTU
+P16.n.05
+Protocol
+Modbus RTU
+Modbus RTU
+Modbus TCP
+Modbus ASCII
+Modbus TCP
+Per il modulo di espansione EXP 10 13 (Ethernet)
+esistono altri tre parametri.
+For expansion module and EXP 10 13 (Ethernet), there
+are other three parameters.
+PAR
+Funzione
+Range
+Default
+P16.n.06
+Indirizzo IP
+000.000.000.000
+000.000.000.000
+PAR
+Function
+Range
+Default
+255.255.255.255
+P16.n.06
+IP Address
+000.000.000.000
+000.000.000.000
+P16.n.07
+Subnet
+000.000.000.000
+000.000.000.000
+255.255.255.255
+MASK
+255.255.255.255
+P16.n.07
+Subnet
+000.000.000.000
+000.000.000.000
+P16.n.08
+TCP-IP
+0 9999
+1001
+MASK
+255.255.255.255
+Port
+P16.n.08
+TCP-IP
+0 9999
+1001
+Port
+Lovato
+electric
+Doc. 1432IGB05_20.docx
+20/05/2020
+P. 1 / 12
+PROTOCOLLO MODBUS® RTU
+MODBUS® RTU PROTOCOL
+Quando si utilizza il protocollo Modbus® RTU, la
+If one selects the Modbus® RTU protocol, the
+struttura del messaggio di comunicazione è così
+communication message has the following structure:
+costituita:
+T1
+Indirizzo
+Funzione
+Dati
+CRC
+T1
+T1
+Address
+Function
+Data
+CRC
+T1
+T2
+(8 bit)
+(8 bit)
+(N X 8 bit)
+(16 bit)
+T2
+T2
+bit)
+(8 bit)
+(N X 8 bit)
+(16 bit)
+T2
+T3
+T3
+T3
+T3
+II campo Indirizzo contiene l'indirizzo dello strumento
+The Address field holds the serial address of the slave
+slave cui il messaggio viene inviato.
+destination device.
+Il campo Funzione contiene il codice della funzione che
+The Function field holds the code of the function that
+deve essere eseguita dallo slave.
+must be executed by the slave.
+II campo Dati contiene i dati inviati allo slave o quelli
+The Data field contains data sent to the slave or data
+inviati dallo slave come risposta ad una domanda.
+received from the slave in response to a query.
+Per la serie DCRG8, la lunghezza massima consentita
+For the DCRG8 series, the maximum length for the
+per il campo dati e' di
+data field is:
+80 registri da 16 bit (160 bytes)
+80 16-bit registers (160 bytes)
+Il campo CRC consente sia al master che allo slave di
+The CRC field allows the master and slave devices to
+verificare se ci sono errori di trasmissione.
+check the message integrity. If a message has been
+Questo consente, in caso di disturbo sulla linea di
+corrupted by electrical noise or interference, the CRC
+trasmissione, di ignorare il messaggio inviato per evitare
+field allows the devices to recognize the error and
+problemi sia dal lato master che slave.
+thereby to ignore the message.
+The T1 T2 T3 sequence corresponds to a time in
+La sequenza T1 T3 corrisponde al tempo durante il
+which data must not be exchanged on the
+quale non devono essere scambiati dati sul bus di
+communication bus to allow the connected devices to
+comunicazione, per consentire agli strumenti collegati di
+recognize the end of one message and the beginning of
+riconoscere la fine di un messaggio e l'inizio del
+another. This time must be at least 3.5 times the time
+successivo. Questo tempo deve essere pari a 3.5
+required to send one character.
+caratteri.
+The DCRG8 measures the time that elapses from the
+Il DCRG8 misura il tempo trascorso tra la ricezione di un
+reception of one character and the following. If this time
+carattere e il successivo e se questo tempo supera quello
+exceeds the time necessary to send 3.5 characters at
+necessario per trasmettere 3.5 caratteri, riferiti al baud
+the selected baudrate, then the next character will be
+rate impostato, il prossimo carattere viene considerato
+considered as the first of a new message.
+l'inizio di un nuovo messaggio.
+MODBUS® FUNCTIONS
+FUNZIONI MODBUS®
+The available functions are:
+Le funzioni disponibili sono:
+03 = Read input
+Allows to read the DCRG8
+03 Read input
+Consente la lettura delle
+register
+measures.
+register
+misure disponibili nel DCRG8
+04 = Read input
+Allows to read the DCRG8
+Consente la lettura delle
+04 = Read input
+register
+measures.
+misure disponibili nel
+register
+DCRG8.
+06 = Preset single
+Allows writing parameters
+06 = Preset single
+Permette la scrittura dei
+register
+register
+parametri
+Allows to read the device
+07 = Read exception
+Permette di leggere lo stato
+status
+07 = Read exception
+dell'apparecchio
+10 = Preset multiple
+Allows writing several
+10 Preset multiple
+Permette la scrittura di più
+register
+parameters
+register
+parametri
+Allows to read information
+Permette di leggere
+17 = Report slave ID
+about the device.
+17 = Report slave ID
+informazioni relative all'
+apparecchio
+For instance, to read the value of total COS phi which
+Per esempio, se si vuole leggere dal DCRG8 con
+resides at location 0 (0 Hex) from the DCRG8 with serial
+indirizzo 01 il valore del COS phi totale che si trova alla
+address 01, the message to send is the following:
+locazione 0 (0 Hex), il messaggio da spedire è il
+seguente:
+01
+04
+FF
+FF
+00
+02
+71
+EF
+01
+04
+FF
+FF
+00
+02
+71
+EF
+Whereas:
+01= slave address
+Dove:
+04 Modbus® function 'Read input register'
+01= indirizzo slave
+FF FF = Address of the required register (total COS phi)
+04 funzione di lettura locazione
+decreased by one
+FF FF = indirizzo della locazione diminuito di un'unità,
+00 02 = Number of registers to be read beginning from
+contenete il valore delcos phi totale.
+address 0
+00 02 = numero di registri da leggere a partire
+71 EF CRC Checksum
+dall'indirizzo 0
+71 EF = checksum CRC
+Lovato
+electric
+Doc. I432IGB05_20.docx
+20/05/2020
+P. 2/12
+La risposta del DCRG8 è la seguente:
+The DCRG8 answer is the following:
+01
+04
+04
+00
+00
+03
+B4
+FB
+03
+01
+04
+04
+00
+00
+03
+B4
+FB
+03
+Dove:
+Where:
+01= indirizzo del DCRG8 (Slave 01)
+01 = DCRG8 address (Slave 01)
+04 = funzione richiesta dal Master
+04 = Function requested by the master
+04 = numero di byte inviati dal DCRG8
+04 = Number of bytes sent by the DCRG8
+00 00 03 B4 = valore esadecimale COS phi totale
+00 00 03 B4 = Hex value of total COS phi
+948 0.948
+=948=0.948
+FB 03 = checksum CRC
+FB 03 = CRC checksum
+FUNZIONE 04: READ INPUT REGISTER
+FUNCTION 04: READ INPUT REGISTER
+La funzione 04 permette di leggere una o più grandezze
+The Modbus® function 04 allows to read one or more
+consecutive in memoria. L'indirizzo di ciascuna
+consecutive registers from the slave memory.
+grandezza e' indicato nelle Tabelle 2-4 riportate nelle
+The address of each measure is given in the tables 2-
+ultime pagine del presente manuale.
+4 on the final pages of this manual.
+Come da standard Modbus®, l'indirizzo specificato nel
+As for Modbus® standard, the address in the query
+messaggio va diminuito di 1 rispetto a quello effettivo
+message must be decreased by one from the effective
+riportato nella tabella.
+address reported in the table.
+Se l'indirizzo richiesto non è compreso nella tabella o il
+If the measure address is not included in the table or
+numero di registri richiesti è maggiore del numero
+the number of requested registers exceeds the
+consentito il DCRG8 ritorna un messaggio di errore (vedi
+acceptable max number, the DCRG8 will return an error
+tabella errori).
+code (see error table).
+Richiesta Master:
+Master query:
+Indirizzo slave
+08h
+Slave address
+08h
+Funzione
+04h
+Function
+04h
+MSB Indirizzo registro
+00h
+MSB address
+00h
+LSB Indirizzo registro
+0Fh
+LSB address
+0Fh
+MSB Numero registri
+00h
+MSB register number
+00h
+LSB Numero registri
+08h
+LSB register number
+08h
+LSB CRC
+C1h
+LSB CRC
+C1h
+MSB CRC
+56h
+MSB CRC
+56h
+Nell'esempio vengono richiesti, allo slave numero 8, 8
+In the above example, slave 08 is requested for 8
+registri consecutivi a partire dall'indirizzo 10h.
+consecutive registers beginning with address 10h.
+Quindi vengono letti i registri dall' 10h al 17h.
+Thus, registers from 10h to 17h will be returned. As
+Il comando termina sempre con il valore di checksum
+usual, the message ends with the CRC checksum.
+CRC.
+Risposta Slave:
+Slave response:
+Indirizzo slave
+08h
+Slave address
+08h
+Funzione
+04h
+Function
+04h
+Numero di byte
+10h
+Byte number
+10h
+MSB Dato 10h
+00h
+MSB register 10h
+00h
+LSB Dato 10h
+00h
+LSB register 10h
+00h
+MSB Dato 17h
+00h
+MSB register 17h
+00h
+LSB Dato 17h
+00h
+LSB register 17h
+00h
+LSB CRC
+5Eh
+LSB CRC
+5Eh
+MSB CRC
+83h
+MSB CRC
+83h
+La risposta è composta sempre dall'indirizzo dello slave,
+The response is always composed of the slave address,
+dalla funzione richiesta dal Master e dai dati dei registri
+the function code requested by the master and the
+richiesti. La risposta termina sempre con il valore di
+contents of the requested registers. The answer ends
+checksum CRC.
+with the CRC.
+Lovato
+electric
+Doc. 1432IGB05_20.docx
+20/05/2020
+P. 3/12
+FUNZIONE 06: PRESET SINGLE REGISTER
+FUNCTION 06: PRESET SINGLE REGISTER
+Questa funzione permette di scrivere nei registri. Essa
+This function allows to write in the registers.
+puo' essere utilizzata solo con i registri di indirizzo
+It can be used only with registers with address higher
+superiore a 1000 Hex. E' possibile ad esempio impostare
+than 1000 Hex. For instance, it is possible to change
+i parametri del setup. Qualora il valore impostato non
+setup parameters. If the value is not in the correct
+rientri nel valore minimo e massimo della tabella il
+range, the DCRG8 will answer with an error message.
+DCRG8 risponderà con un messaggio di errore. Se viene
+In the same way, if the parameter address is not
+richiesto un parametro ad un indirizzo inesistente verrà
+recognised, the DMG will send an error response.
+risposto con un messaggio di errore. L'indirizzo ed il
+The address and the valid range for each parameter are
+range valido per i vari parametri può essere trovato nelle
+indicated in Tables 5, 6 and 7.
+Tabelle 5, 6 e 7.
+Richiesta Master:
+Master message:
+Indirizzo slave
+08h
+Indirizzo slave
+08h
+Funzione
+06h
+Funzione
+06h
+MSB Indirizzo registro
+2Fh
+MSB Indirizzo registro
+2Fh
+LSB Indirizzo registro
+0Fh
+LSB Indirizzo registro
+0Fh
+MSB Dato
+00h
+MSB Dato
+00h
+LSB Dato
+0Ah
+LSB Dato
+0Ah
+LSB CRC
+31h
+LSB CRC
+31h
+MSB CRC
+83h
+MSB CRC
+83h
+Risposta Slave:
+Slave response:
+La risposta è un eco della domanda, cioè viene inviato al
+The slave response is an echo to the query, that is the
+master l'indirizzo del dato da modificare e il nuovo valore
+slave sends back to the master the address and the new
+del parametro.
+value of the variable.
+FUNZIONE 07: READ EXCEPTION STATUS
+FUNCTION 07: READ EXCEPTION STATUS
+Tale funzione permette di leggere lo stato in cui si trova il
+This function allows to read the status of the automatic
+commutatore di linea.
+transfer switch.
+Richiesta Master:
+Master query:
+Indirizzo slave
+08h
+Slave address
+08h
+Funzione
+07h
+Function
+07h
+LSB CRC
+47h
+LSB CRC
+47h
+MSB CRC
+B2h
+MSB CRC
+B2h
+La tabella seguente riporta il significato del byte inviato
+The following table gives the meaning of the status byte
+dal DCRG8 come risposta:
+sent by the DCRG8 as answer:
+BIT
+SIGNIFICATO
+BIT
+MEANING
+0
+0
+1
+Modo operativo MAN
+1
+Operative mode MAN
+2
+Modo operativo AUT
+2
+Operative mode AUT
+3
+TEST utente
+3
+User TEST
+4
+In errore
+4
+Error on
+FUNZIONE 17: REPORT SLAVE ID
+FUNZIONE 17: REPORT SLAVE ID
+Questa funzione permette di identificare il tipo di
+This function allows to identify the device type.
+strumento.
+Richiesta Master.
+Master query.
+Indirizzo slave
+08h
+Slave address
+08h
+Funzione
+11h
+Function
+11h
+LSB CRC
+C6h
+LSB CRC
+C6h
+MSB CRC
+7Ch
+MSB CRC
+7Ch
+Lovato
+electric
+Doc. 1432IGB05_20.docx
+20/05/2020
+P. 12
+Risposta Slave:
+Slave response:
+Indirizzo slave
+08h
+Slave address
+08h
+Funzione
+11h
+Function
+11h
+Contatore bytes
+04 h
+Byte count
+04h
+Dato 1 (Tipo)
+82h
+Data 01 Type
+82h
+Dato 2 (Revisione software)
+04h
+Data 02 (Sw revision)
+04h
+Dato 3 (Revisione hardware)
+00h
+Data 03 (Hardware revision)
+00h
+Dato 4 (Revisione parametri)
+01h
+Data 04 (Parameter revision)
+01h
+LSB CRC
+...h
+LSB CRC
+...h
+MSB CRC
+...h
+MSB CRC
+...h
+48h DCRG8
+48h DCRG8
+ERRORI
+ERRORS
+Nel caso lo slave riceva un messaggio errato, segnala la
+In case the slave receives an incorrect message, it
+condizione al master rispondendo con un messaggio
+answers with a massage composed by the queried
+composto dalla funzione richiesta in OR con 80 Hex,
+function ORed with 80 Hex, followed by an error code
+seguita da un codice di errore.
+byte.
+Nella seguente tabella vengono riportati i codici di errore
+In the following table are reported the error codes sent
+inviati dallo slave al master:
+by the slave to the master:
+TABELLA 1: CODICI ERRORE
+TABLE 1: ERROR CODES
+COD
+ERRORE
+CODE
+ERROR
+01
+Funzione non valida
+01
+Invalid function
+02
+Indirizzo registro illegale
+02
+Invalid address
+03
+Valore del parametro fuori range
+03
+Parameter out of range
+04
+Impossibile effettuare operazione
+04
+Function execution impossible
+06
+Slave occupato, funzione
+06
+Slave busy, function momentarily not
+momentaneamente non disponibile
+available
+FUNZIONE 16: PRESET MULTIPLE REGISTER
+FUNZIONE 16: PRESET MULTIPLE REGISTER
+Questa funzione permette di modificare più parametri
+This function allows to modify multiple parameters
+consecutivamente o parametri composti da più di 2
+with a single message, or to preset a value longer than
+byte. L'indirizzo ed il range valido per vari parametri
+one register. The address and the valid range for each
+possono essere trovati nella Tabella 8.
+parameter are stated in Table 8.
+Richiesta Master:
+Master message:
+Indirizzo slave
+08h
+Slave address
+08h
+Funzione
+10h
+Function
+10h
+MSB Indirizzo registro
+20h
+MSB register address
+20h
+LSB Indirizzo registro
+01h
+LSB register address
+01h
+MSB Numero registri
+00h
+MSB register number
+00h
+LSB Numero registri
+02h
+LSB register number
+02h
+MSB Dato
+00h
+MSB data
+00h
+LSB Dato
+00h
+LSB data
+00h
+MSB Dato
+00h
+MSB data
+00h
+LSB Dato
+00h
+LSB data
+00h
+LSB CRC
+85h
+LSB CRC
+85h
+MSB CRC
+3Eh
+MSB CRC
+3Eh
+Risposta Slave:
+Slave response:
+Indirizzo slave
+08h
+Slave address
+08h
+Funzione
+10h
+Function
+10h
+MSB Indirizzo registro
+20h
+MSB register address
+20h
+LSB Indirizzo registro
+01h
+LSB register address
+01h
+MSB Numero byte
+00h
+MSB byte number
+00h
+LSB Numero byte
+02h
+LSB byte number
+02h
+LSB CRC
+1Bh
+LSB CRC
+1Bh
+MSB CRC
+51h
+MSB CRC
+51h
+Lovato
+electric
+Doc. 1432IGB05_20.docx
+20/05/2020
+P. 5/12
+PROTOCOLLO MODBUS® ASCII
+MODBUS® ASCII PROTOCOL
+Il protocollo Modbus® ASCII viene utilizzato
+The Modbus® ASCII protocol is normally used in
+normalmente nelle applicazioni che richiedono di
+application that require to communicate through a
+comunicare via modem.
+couple of modems.
+Le funzioni e gli indirizzi disponibili sono gli stessi della
+The functions and addresses available are the same as
+versione RTU, ma caratteri trasmessi sono in ASCII e la
+for the RTU version, but the transmitted characters are
+terminazione del messaggio non e' effettuata a tempo ma
+in ASCII and the message end is delimited by Carriage
+con dei caratteri di ritorno a capo.
+return/ Line Feed instead of a transmission pause.
+Se si seleziona il parametro P16.x.05 o P16.05 o come
+If one selects the parameter P16.x.05 or P16.05 as
+protocollo Modbus® ASCII, la struttura del messaggio di
+Modbus® ASCII protocol, the communication message
+comunicazione sulla relativa porta di comunicazione è
+on the correspondent communication port has the
+così costituita:
+following structure:
+Address
+Function
+Dates
+LRC
+CR
+Indirizzo
+Funzione
+Dati
+LRC
+CR
+(2 chars)
+(2 chars)
+(N chars)
+(2
+LF
+2 chars
+2 chars
+(N chars)
+2 chars
+LF
+chars)
+The Address field holds the serial address of the slave
+Il campo Indirizzo contiene l'indirizzo dello strumento
+destination device.
+slave cui il messaggio viene inviato.
+The Function field holds the code of the function that
+Il campo Funzione contiene il codice della funzione che
+must be executed by the slave.
+deve essere eseguita dallo slave.
+The Data field contains data sent to the slave or data
+Il campo Dati contiene i dati inviati allo slave o quelli
+received from the slave in response to a query. The
+inviati dallo slave come risposta ad una domanda. La
+maximum allowable length is of (read pag. 3)
+massima lunghezza consentita e' di (ved. Pag. 3) registri
+consecutive registers.
+consecutivi.
+The LRC field allows the master and slave devices to
+Il campo LRC consente sia al master che allo slave di
+check the message integrity. If a message has been
+verificare se ci sono errori di trasmissione.
+corrupted by electrical noise or interference, the LRC
+Questo consente, in caso di disturbo sulla linea di
+field allows the devices to recognize the error and
+trasmissione, di ignorare il messaggio inviato per evitare
+thereby ignore the message.
+problemi sia dal lato master che slave.
+The message terminates always with CRLF control
+character (0D 0A).
+Il messaggio termina sempre con i caratteri di controllo
+CRLF (0D 0A).
+Example:
+For instance, to read the status of third step (index 2),
+Esempio:
+which resides at location 2112h from the slave with
+Per esempio, se si vuole leggere all' indirizzo 2112h il
+serial address 08, the message to send is the following:
+valore dello stato del terzo step (indice 2), il messaggio
+da spedire è il seguente:
+:
+08
+04
+21
+11
+00
+01
+C1
+CRLF
+08
+04
+21
+11
+00
+01
+C1
+CRLF
+Whereas:
+:
+= ASCII 3Ah message start delimiter
+Dove:
+08 = slave address
+= ASCII 3Ah Delimitatore inizio messaggio
+04 Modbus® function 'Read input register
+08 indirizzo slave.
+21 11 = Address of the required register (L3 current
+04 = funzione di lettura locazione.
+phase decreased by one
+21 11 = indirizzo della locazione diminuito di un'unità,
+01 = Number of registers to be read beginning from
+dello stato del terzo step (indice 2)
+address 04
+00 01 = numero di registri da leggere a partire
+C1= LRC Checksum
+dall'indirizzo 2112.
+CRLF = ASCII 0Dh 0Ah = Message end delimiter
+C1 = checksum LRC.
+CRLF = ASCII 0Dh 0Ah = delimitatore fine messaggio
+The DCRG8 answer is the following:
+CR
+La risposta del DCRG8 è la seguente:
+:
+08
+04
+04
+00
+01
+F1
+LF
+CR
+08
+04
+04
+00
+01
+F1
+LF
+Whereas:
+ASCII 3Ah message start delimiter
+Dove:
+08 DCRG8 address (Slave 08)
+: = ASCII 3Ah = Delimitatore inizio messaggio
+04 = Function requested by the master
+08 indirizzo del DCRG8 (Slave 08).
+04 = Number of bytes sent by the multimeter
+04 funzione richiesta dal Master.
+00 01 step status (1 = inserted)
+04 = numero di byte inviati dallo slave.
+F1 = LRC checksum
+00 01 = stato dello step (1 inserito).
+CRLF = ASCII 0Dh 0Ah = Message end delimiter
+F1 = checksum LRC.
+CRLF = ASCII 0Dh 0Ah delimitatore fine messaggio
+Lovato
+electric
+Doc. 1432IGB05_20.docx
+20/05/2020
+P. 6/12
+TABELLA 2:
+TABLE 2:
+MISURE FORNITE DAL PROTOCOLLO DI COM.
+MEASURES SUPPLIED BY SERIAL COMMUNICATION PROTOCOL
+(Utilizzabili con funzioni 03 e 04)
+(To be used with functions 03 and 04)
+Indirizzo
+UNITA'
+FORMATO
+From
+WORDS
+MISURA
+MEASURE
+Address
+UNIT
+FORMAT
+Fw.Rev.
+MISURA ISTANTANEA (IN)
+ISTANTANEOUS MEASURE (IN)
+0000H
+2
+Cos phi / Cos phi totale
+Cos phi / Total Cos phi
+Value/1000
+Signed long
+4
+0002H
+2
+Sen phi / ND
+Sen phi NA
+Value/1000
+Signed long
+4
+0004H
+2
+Tan phi / ND
+Tan phi NA
+Value/1000
+Signed long
+4
+0006H
+2
+Tensione / Tensione Equivalente
+Voltage / Equivalent Voltage
+V/10
+Signed long
+4
+0008H
+2
+Corrente / Corrente Equivalente
+Current / Equivalent Current
+A/1000
+Signed long
+4
+000AH
+2
+Potenza Reattiva / ND
+Reactive Power / NA
+Var
+Signed long
+4
+000CH
+2
+ND / Potenza Reattiva 1
+NA / Reactive Power 1
+Var
+Signed long
+4
+000EH
+2
+ND / Potenza Reattiva 2
+NA / Reactive Power 2
+Var
+Signed long
+4
+0010H
+2
+ND / Potenza Reattiva 3
+NA / Reactive Power 3
+Var
+Signed long
+4
+0012H
+2
+Delta Var / Delta Var
+Delta Var / Delta Var
+Var
+Signed long
+4
+0016H
+2
+Energia attiva totale importata
+Total imported active energy
+kWh/10
+Unsigned long
+4
+0018H
+2
+Energia reattiva induttiva totale
+Total inductive reactive energy
+kVarh/10
+Unsigned long
+4
+001AH
+2
+Energia apparente totale
+Total apparent energy
+kVA/10
+Unsigned long
+4
+001CH
+2
+Energia attiva totale esportata
+Total exported active energy
+kWh/10
+Unsigned long
+4
+001EH
+2
+Energia reattiva capacitiva totale
+Total capacitive reactive energy
+kVarh/10
+Unsigned long
+4
+0040H
+2
+ND / Tensione L1
+NA / L1 Voltage
+V/10
+Signed long
+4
+0042H
+2
+ND / Tensione L2
+NA / L2 Voltage
+V/10
+Signed long
+4
+0044H
+2
+ND / Tensione L3
+NA / L3 Voltage
+V/10
+Signed long
+4
+0046H
+2
+ND / Corrente L1
+NA / L1 Current
+A/1000
+Signed long
+4
+0048H
+2
+ND / Corrente L2
+NA / L2 Current
+A/1000
+Signed long
+4
+004AH
+2
+ND / Corrente L3
+NA / L3 Current
+A/1000
+Signed long
+4
+004CH
+2
+ND / Tensione L1-L2
+NA / L1-L2 Voltage
+V/10
+Signed long
+4
+004EH
+2
+ND / Tensione L2-L3
+NA / L2-L3 Voltage
+V/10
+Signed long
+4
+0050H
+2
+ND / Tensione L3-L1
+NA / L3-L1 Voltage
+V/10
+Signed long
+4
+0052H
+2
+ND / Cos phi 1
+NA / Cos phi 1
+Value/1000
+Signed long
+4
+0054H
+2
+ND / Cos phi 2
+NA / Cos phi 2
+Value/1000
+Signed long
+4
+0056H
+2
+ND / Cos phi 3
+NA / Cos phi 3
+Value/1000
+Signed long
+4
+0058H
+2
+ND / Sen phi 1
+NA / Sen phi 1
+Value/1000
+Signed long
+4
+005AH
+2
+ND / Sen phi 2
+NA / Sen phi 2
+Value/1000
+Signed long
+4
+005CH
+2
+ND / Sen phi 3
+NA / Sen phi 3
+Value/1000
+Signed long
+4
+005EH
+2
+ND / Tan phi 1
+NA / Tan phi 1
+Value/1000
+Signed long
+4
+0060H
+2
+ND / Tan phi 2
+NA / Tan phi 2
+Value/1000
+Signed long
+4
+0062H
+2
+ND / Tan phi 3
+NA / Tan phi 3
+Value/1000
+Signed long
+4
+1500H
+2
+Potenza Attiva / ND
+Active Power / NA
+W
+Unsigned long
+4
+1502H
+2
+ND / Potenza Attiva 1
+NA / Active Power 1
+W
+Unsigned long
+4
+1504H
+2
+ND / Potenza Attiva 2
+NA / Active Power 2
+W
+Unsigned long
+4
+1506H
+2
+ND / Potenza Attiva 3
+NA / Active Power 3
+W
+Unsigned long
+4
+1508H
+2
+Potenza Apparente / ND
+Apparent Power / NA
+VA
+Unsigned long
+4
+150AH
+2
+ND / Potenza Apparente 1
+NA / Apparent Power 1
+VA
+Unsigned long
+4
+150CH
+2
+ND / Potenza Apparente 2
+NA / Apparent Power 2
+VA
+Unsigned long
+4
+150EH
+2
+ND / Potenza Apparente 3
+NA / Apparent Power 3
+VA
+Unsigned long
+4
+Nota Se la centralina è cablata e programmata con una tensione ed una corrente verrà restituita la prima misura; Se invece sono disponibili 3 tensioni e 3 correnti verrà restituita la seconda
+misura.
+Note If the device has been wired and programmed with one voltage and one current inputs, then the first measurement will be returned; Otherwise, if three voltages and three current are
+available, the second measurement will be returned.
+Indirizzo
+UNITA'
+FORMATO
+From
+WORDS
+MISURA
+MEASURE
+Address
+UNIT
+FORMAT
+Fw.Rev.
+1300H + (2 i),
+2
+0<= <= 31
+Potenza reattiva step i
+Reactive Power Step i
+kVar/100
+Unsigned long
+4
+1200H + (2 i),
+2
+Tempo inserzione step i
+Insertion Time Step i
+Sec
+Unsigned long
+4
+0<= <= 31
+1100H + (2 i),
+2
+Numero inserzioni step i
+Insertion Count Step i
+-
+Unsigned long
+4
+0<= <= 31
+2001H
+1
+Flag CAP-IND Corrente / ND
+Current CAP-IND Flag / ND
+0 = CAP / 1 = IND
+Unsigned short
+4
+2002H
+1
+ND / Flag CAP-IND Corrente 1
+ND / Current 1 CAP-IND Flag
+0 = CAP / = IND
+Unsigned short
+4
+2003H
+1
+ND / Flag CAP-IND Corrente 2
+ND / Current 2 CAP-IND Flag
+0 = CAP / 1 = IND
+Unsigned short
+4
+2004H
+1
+ND / Flag CAP-IND Corrente 3
+ND / Current 3 CAP-IND Flag
+0 = CAP / 1 = IND
+Unsigned short
+4
+2005H
+1
+PF medio sttimanale
+Average weekly PF
+/1000
+Unsigned short
+4
+0 = step not ins.
+2110H + (1 i),
+1
+0<= <= 31
+Stato Step
+Step Status
+1 = step ins.
+3 = step moving
+Unsigned short
+4
+2 : step not config.
+202AH
+1
+Temperatura °C/°F
+Temperature °C/°F
+Value/10
+Signed short
+4
+202BH
+1
+Temperatura massima °C/°F
+Max Temperature °C/°F
+Value/10
+Signed short
+4
+2C00H + (1 i),
+1
+(i+2)° armonica di tensione L1
+(i+2)° L1 harmonic voltage
+Value/10
+Unsigned short
+4
+0<= <= 29
+2C20H
+1
+THD di Tensione L1
+L1 voltage THD
+Value/10
+Unsigned short
+4
+2C30H + (1 i),
+1
+(i+2)° armonica di tensione L2
+(i+2)° L2 harmonic voltage
+Value/10
+Unsigned short
+4
+0<= <= 29
+2C50H
+1
+THD di Tensione L2
+L2 voltage THD
+Value/10
+Unsigned short
+4
+2C60H + (1 i),
+1
+0<= <= 29
+(i+2)° armonica di tensione L3
+(i+2)° L3 harmonic voltage
+Value/10
+Unsigned short
+4
+2C80H
+1
+THD di Tensione L3
+L3 voltage THD
+Value/10
+Unsigned short
+4
+Lovato
+electric
+Doc. 1432IGB05_20.docx
+20/05/2020
+P. 7/12
+Indirizzo
+UNITA'
+FORMATO
+From
+WORDS
+MISURA
+MEASURE
+Address
+UNIT
+FORMAT
+Fw.Rev.
+MISURA ISTANTANEA (IN)
+ISTANTANEOUS MEASURE (IN)
+4
+2C90H + (1 *i),
+1
+0<= <= 29
+(i+2)° armonica di corrente L1
+(i+2)° L1 harmonic current
+Value/10
+Unsigned integer
+4
+2CB0H
+1
+THD di corrente L1
+L1 current THD
+Value/10
+Unsigned integer
+4
+2CC0H + (1 *i),
+1
+0<= <= 29
+(i+2)° armonica di corrente L2
+(i+2)° L2 harmonic current
+Value/10
+Unsigned integer
+4
+2CE0H
+1
+THD di corrente L2
+L2 current THD
+Value/10
+Unsigned integer
+4
+2CF0H + (1 *i),
+1
+(i+2)° Armonica di corrente L3
+(i+2)° L3 harmonic current
+Value/10
+0<= <= 29
+Unsigned integer
+4
+2D10H
+1
+THD di corrente L3
+L3 current THD
+Value/10
+Unsigned integer
+4
+2D20H + (1 *i),
+1
+0<= <= 29
+(i+2)° armonica di tensione L1-L2
+(i+2)° L1-L2 harmonic voltage
+Value/10
+Unsigned integer
+4
+2D40
+1
+THD di Tensione L1-L2
+L1-L2 voltage THD
+Value/10
+Unsigned integer
+4
+2D50H (1*i),
+1
+0<= <= 29
+(i+2)° armonica di tensione L2-L3
+(i+2)° L2-L3 harmonic voltage
+Value/10
+Unsigned integer
+4
+2D70H
+1
+THD di Tensione L2-L3
+L2-L3 voltage THD
+Value/10
+Unsigned integer
+4
+2D80 + i),
+1
+(i+2)° armonica di tensione L3-L1
+(i+2)° L3-L1 harmonic voltage
+Value/10
+Unsigned integer
+4
+0<= <= 29
+2DA0H
+1
+THD di Tensione L3-L1
+L3-L1 voltage THD
+Value/10
+Unsigned integer
+4
+1A80H
+2
+Contatore 1
+Counter 1
+/1
+Unsigned long
+4
+1A82H
+2
+Contatore 2
+Counter 2
+/1
+Unsigned long
+4
+1A84H
+2
+Contatore 3
+Counter 3
+/1
+Unsigned long
+4
+1A86H
+2
+Contatore 4
+Counter 4
+/1
+Unsigned long
+4
+1A88H
+2
+Contatore 5
+Counter 5
+/1
+Unsigned long
+4
+1A8AH
+2
+Contatore 6
+Counter 6
+/1
+Unsigned long
+4
+1A8CH
+2
+Contatore 7
+Counter 7
+/1
+Unsigned long
+4
+1A8EH
+2
+Contatore 8
+Counter 8
+/1
+Unsigned long
+4
+2DC0H
+1
+Limite 1
+Limit 1
+/1
+Unsigned integer
+4
+2DCFH
+1
+Limite 16
+Limit 16
+/1
+Unsigned integer
+4
+2DE0H
+1
+Ingresso 1
+Input 1
+/1
+Unsigned integer
+4
+2DE7H
+1
+Ingresso 8
+Input 8
+/1
+Unsigned integer
+4
+2DF0H
+1
+Uscita 1
+Output 1
+/1
+Unsigned integer
+4
+2DF7H
+1
+Uscita 16
+Output 16
+/1
+Unsigned integer
+4
+TABELLA 3:
+TABLE 3:
+COMANDI
+COMMANDS
+(Utilizzabili con funzione 06)
+(To be used with function 06)
+INDIRIZZO
+WORDS
+COMANDO
+COMMAND
+VALORE
+FORMATO
+From Fw.
+ADDRESS
+VALUE
+FORMAT
+Rev.
+2FF0H
+1
+Azzera energia parziale
+Reset Partial Energy
+1
+Unsigned int
+4
+2FF0H
+1
+Azzera contatori
+Reset External counter
+2
+Unsigned int
+4
+2FF0H
+1
+Azzera limiti
+Reset Limits
+3
+Unsigned int
+4
+2FF0H
+1
+Azzera temp. massima
+Reset max temperatue
+4
+Unsigned int
+4
+2FF0H
+1
+Azzera sovraccarico condensatori
+Reset capacitor overload
+5
+Unsigned int
+4
+2FF0H
+1
+Azzera tempi inserzione condensatori
+Reset step insertion time
+6
+Unsigned int
+4
+2FF0H
+1
+Azzera manovre condensatori
+Reset step insertion count
+7
+Unsigned int
+4
+2FF0H
+1
+Azzera Step trimming
+Reset Step trimming
+8
+Unsigned int
+4
+2FFOH
+1
+Azzera energia totale
+Reset Total Energy
+9
+Unsigned int
+4
+2FF0H
+1
+Ripristina modalità test
+Restore test mode
+10
+Unsigned int
+4
+2FF0H
+1
+Azzera memoria eventi
+Reset events log
+11
+Unsigned int
+4
+2FF0H
+1
+Setup a default
+Setup to default
+12
+Unsigned int
+4
+2FF0H
+1
+Salva copia setup
+Backup parameters
+13
+Unsigned int
+4
+2FF0H
+1
+Ripristina setup
+Restore parameters
+14
+Unsigned int
+4
+2FF0H
+1
+Azzera TPF settimanale
+Reset week TPF
+15
+Unsigned int
+4
+2FF0H
+1
+Azzera manutenzione 1
+Reset maintenance 1
+16
+Unsigned int
+4
+2FF0H
+1
+Azzera manutenzione 2
+Reset maintenance 2
+17
+Unsigned int
+4
+2FF0H
+1
+Azzera manutenzione 3
+Reset maintenance 3
+18
+Unsigned int
+4
+3005H
+1
+Attivazione di uno step
+Step activation
+Unsigned int
+4
+3006H
+1
+Disattivazione di uno step
+Step de-activation
+Unsigned int
+4
+ATTENZIONE: Dopo aver usato questo comando è preferibile utilizzare il comando di REBOOT.
+ATTENTION: After using of this command it is recommended to send REBOOT command.
+2
+Scrivere nel registro indicato il numero dello step da attivare/disattivare. Se si tenta di attivare uno step per il quale è in corso il tempo di riconnessione, il comando
+non verrà eseguito.
+Write in the correspondent register the number of the step to be activated/ deactivated. Trying to activate a step while the correspondent reconnection time is running,
+the command will be ignored.
+Lovato
+electric
+Doc. 1432IGB05_20.docx
+20/05/2020
+P. 8/12
+TABELLA 4:
+TABLE 4:
+EVENTI
+EVENTS
+Indirizzo
+UNITA'
+FORMATO
+WORDS
+MISURA
+MEASURE
+Address
+UNIT
+FORMAT
+5030H
+1
+PUNTATORE EVENTI
+EVENTS POINTER
+Unsigned
+Indica l'ultimo evento registrato (LSB) / CONTATORE EVENTI
+Last event stored (LSB)/ EVENTS COUNTER
+integer
+Indica il numero totale eventi (MSB)
+Total events stored (MSB)
+5032H
+43
+Descrizione Evento nella lingua corrente
+Event description using current language
+Unsigned
+integer
+Procedura per la lettura degli eventi
+Procedure for events reading
+1 Lettura di contatore e puntatore eventi con funzione 04 dall'indirizzo 5030H
+1 Reading of event counter and pointer with function 04 from address 5030H
+2 Il contatore è nel MSB del valore restituito, il puntatore nel LSB
+2 The counter is in the MSB of the return value, the pointer to the LSB
+3 Scrittura con funzione 06 del numero di evento desiderato, scrivendolo all'indirizzo
+3 Writing with 06 function of the number of desired event, writing to the address
+5030H
+5030H
+4 Lettura del testo dell'evento con funzione 04, dall'indirizzo 5032H per 43 registri
+4 Read of the text of the event with function 04, 43 registers from address 5032H
+5 - Vengono ritornati 86 byte: i primi 10 sono la data, 1=separatore, dal 12 fino al 19 ora,
+5 86 bytes are returned: the first 10 are the date, 11 separator, from 12 to 19
+20=separatore, dal 21.mo alla fine testo evento
+hour, 20 separator, from 21.st to the end = event text
+Dati: cnt = numero di eventi da scaricare, pnt puntatore all'ultimo evento
+Given: cnt number of events to download, pnt pointer to the last event
+Dopo reset si parte da cnt= 0 pnt 0
+After reset, start from cnt 0, pnt 0
+Quando si verificano degli eventi si incrementano sia pnt che cnt
+When events occur that will increase both pnt and cnt
+Quando cnt arriva al valore max (250) il contatore non si incrementa più e il puntatore
+When cnt reaches the maximum value (250), the counter does not increment
+riparte da 1
+the pointer over and starts again from 1
+Quando si vuole leggere l'evento più giovane, richiedere il record nr. 1 (write al 5030
+When you want to read the younger event, ask for the record no. 1 (by writing
+scrivendo 1)
+to 5030)
+Quando si vuole leggere l'evento più vecchio, richiedere il record nr. cnt (write 5030
+When you want to read the oldest event, ask for the record no. cnt (write
+del valore di cnt)
+5030 the value of cnt)
+TABELLA 5:
+TABLE 5:
+EVENTI:
+EVENTS:
+Il numero massimo eventi memorizzati è 250 (buffer circolare).
+The max events number stored is 250 (circular buffer).
+Indirizzo
+SORGENTE
+CLASSE EVENTO
+TIPO EVENTO
+EVENT CLASS
+EVENT TYPE
+Address
+SOURCE
+0- POWER ON
+0- POWER ON
+0
+POWER
+1- POWER DOWN
+POWER
+1- POWER DOWN
+2- REBOOT
+2- REBOOT
+0- INIZIO ALLARME
+0- ALARM BEGIN
+2
+ALLARME
+1- FINE ALLARME
+ALLARM
+1- ALARM END
+2- RESET ALLARME
+2- ALARM RESET
+0- LIMITE ON
+0- LIMIT ON
+3
+LIMITE
+LIMIT
+1- LIMITE OFF
+1- LIMIT OFF
+0- COMANDO REMOTO ON
+0- REMOTE COMMAND ON
+4
+REMOTO
+REMOTE
+1- COMANDO REMOTO OFF
+1- REMOTE COMMAND OFF
+0- COMUNICAZIONE ON
+0- COMMUNICATION ON
+5
+COMUNICAZIONE
+COMMUNICATION
+1- COMUNICAZIONE OFF
+1- COMMUNICATION OFF
+0- MENU PARAMETRI
+0- PARAMETERS MENU
+7
+SETUP
+SETUP
+2- MPOSTAZIONE OROLOGIO
+2- CLOCK SETUP
+0- AZZERA ENERGIA PARZIALE
+0- RESET PARTIAL ENERGY
+1- AZZERA CONTATORI
+1- RESET COUNTERS
+2- AZZERA LIMITI
+2- RESET LIMITS
+3- AZZERA TEMP. MASSIMA
+3- RESET MAX TEMP.
+4- AZZERA STEP OVERLOAD
+4- RESET STEP OVERLOAD
+5- AZZERA TEMPI INSERZIONE STEP
+5- RESET STEP INSERTION TIME
+6- AZZERA MANOVRE CONDENSATORI
+6- RESET STEP INSERTION COUNT
+7- AZZERA STEP TRIMMING
+7- RESET STEP TRIMMING
+8- AZZERA ENERGIA TOTALE
+8- RESET TOTAL ENERGY
+8
+MENU COMANDI
+COMMAND MENU
+9- RIPRISTINA MODO TEST
+9- RESTORE TEST MODE
+10- AZZERA EVENTI
+10- RESET EVENTS
+11- SETUP A DEFAULT
+11- SETUP TO DEFAULT
+12- SALVA COPIA SETUP
+12- SAVE SETUP
+13- RIPRISTINA SETUP
+13- RESTORE SETUP
+14- AZZERA TPF SETTIMANALE
+14- RESET WEEKLY TPF
+15- AZZERA MANUTENZIONE 1
+15- RESET SERVICE 1
+16- AZZERA MANUTENZIONE 2
+16- RESET SERVICE 2
+17- AZZERA MANUTENZIONE 3
+17- RESET SERVICE 3
+0- PASSWORD UTENTE
+0- USER PASSWORD
+9
+PASSWORD
+PASSWORD
+1- PASSWORD AMMINISTRATORE
+1- ADMINISTARTOR PASSWORD
+10
+CONFIGURAZIONE
+0- CAMBIO CONFIGURAZIONE MODULI
+CONFIGURATION
+0- CHANGE MODULE CONFIGURATION
+TABELLA 6:
+TABLE 6:
+STATO ALLARMI
+ALARM STATUS
+Indirizzo
+UNITA'
+FORMATO
+From
+WORDS
+MISURA
+MEASURE
+Address
+UNIT
+FORMAT
+Fw.Rev.
+1400H
+2
+STATO ALLARMI
+ALARM STATUS
+Unsigned long
+4
+Lovato
+electric
+Doc. I432IGB05_20.docx
+20/05/2020
+P. 9 / 12
+TABELLA 7:
+TABLE 7:
+CODIFICA ALLARMI
+ALARM SCHEME
+Bit
+TIPO ALLARME
+ALARM TYPE
+#
+0
+A01 SOTTOCOMPENSAZIONE
+A01 UNDER COMPENSATION
+1
+A02 SOVRACOMPENSAZIONE
+A02 OVER COMPENSATION
+2
+A03 CORRENTE IMPIANTO TROPPO BASSA
+A03 LOW CURRENT
+3
+A04 CORRENTE IMPIANTO TROPPO ALTA
+A04 HIGH CURRENT
+4
+A05 TENSIONE IMPIANTO TROPPO BASSA
+A05 LOW VOLTAGE
+5
+A06 TENSIONE IMPIANTO TROPPO ALTA
+A06 HIGH VOLTAGE
+6
+A07 TEMPERATURA IMPIANTO TROPPO ALTA
+A07 OVERTEMPERATURE
+7
+A08 SOVRACCARICO CONDENSATORE
+A08 CAPACITOR OVERLOAD
+8
+A09 MICROINTERRUZIONE
+A09 NO-VOLTAGE RELEASE
+9
+A10 STEP DIFETTOSO
+A10 STEP FAILURE
+10
+A11 EVENTO ARMONICO: CORRENTE TROPPO ALTA
+A11 HARMONIC EVENT: HIGH CURRENT
+11
+A12 EVENTO ARMONICO: THD TROPPO ALTA
+A12 HARMONIC EVENT: HIGH THD
+12
+A13 EVENTO ARMONICO: 5. ARMONICA
+A13 HARMONIC EVENT: 5. HARM.
+13
+A14 EVENTO ARMONICO: 7. ARMONICA
+A14 HARMONIC EVENT: 7. HARM.
+14
+A15 EVENTO ARMONICO: 11. ARMONICA
+A15 HARMONIC EVENT: 11. HARM.
+15
+A16 EVENTO ARMONICO: 13. ARMONICA
+A16 HARMONIC EVENT: 13. HARM.
+16
+A17 PROT. 1 ALTA TEMP.
+A17 PROT. 1 HI TEMP.
+17
+A18 PROT. 2 ALTA TEMP.
+A18 PROT. 2 HI TEMP.
+18
+A19 ERRORE COLLEGAMENTO
+A19 LINK ERROR
+19
+UA1 ALLARME UTENTE 1
+UA1 USER ALARM 1
+20
+UA2 ALLARME UTENTE 2
+UA2 USER ALARM 2
+21
+UA3 ALLARME UTENTE 3
+UA3 USER ALARM 3
+22
+UA4 ALLARME UTENTE 4
+UA4 USER ALARM 4
+23
+UA5 ALLARME UTENTE 5
+UA5 USER ALARM 5
+24
+UA6 ALLARME UTENTE 6
+UA6 USER ALARM 6
+25
+UA7 ALLARME UTENTE 7
+UA7 USER ALARM 7
+26
+UA8 ALLARME UTENTE 8
+UA8 USER ALARM 8
+27
+A01 MANUTENZIONE 1 SCADUTA
+A01 SERVICE 1 EXPIRED
+28
+A02 MANUTENZIONE 2 SCADUTA
+A02 SERVICE 2 EXPIRED
+29
+A03 MANUTENZIONE 3 SCADUTA
+A03 SERVICE 3 EXPIRED
+TABELLA 8:
+TABLE 8:
+OROLOGIO DATARIO
+REAL TIME CLOCK
+Indirizzo
+From
+WORDS
+FUNZIONE
+FUNCTION
+RANGE
+Address
+Fw.Rev.
+28F0H
+1
+Anno
+Year
+2000..2099
+4
+28F1H
+1
+Mese
+Month
+1-12
+4
+28F2H
+1
+Giorno
+Day
+1-31
+4
+28F3H
+1
+Ora
+Hours
+0-23
+4
+28F4H
+1
+Minuti
+Minutes
+0-59
+4
+28F5H
+1
+Secondi
+Seconds
+0-59
+4
+28FAH
+1
+Valore 01h: Salvataggio impostazione orologio
+4
+Value 01H: Save real time clock setting
+datario
+TABELLA 9:
+TABLE 9:
+Indirizzo
+From
+WORDS
+STATI
+STATUS
+Address
+Fw.Rev.
+Cambio modalità operativa
+Operative mode change
+4
+2F00H
+1
+Valore 01h: Modalita Manuale
+Valore 01h:Manual Mode
+Valore 02h: Modallita Automatica
+Valore 02h: Automatic Mode
+Valore 01h: Salvataggio eeprom
+Value 01h: Eeprom save
+4
+2F03H
+Valore 02H: Salvataggio Fram
+Valore 02H: Fram save
+4
+1
+Valore 04H: Salvataggio fram e reboot
+Value 04h: Fram save and reboot
+4
+Valore 08H: Salvataggio eeprom e fram
+Valore 08H: EEprom, Fram save
+4
+1
+Valore 00h: Reset apparecchio
+Value 00h: Reset device
+4
+2F07H
+Valore 01h: Reset apparecchio con salvataggio in fram
+Value 01h: Reset device and save Fram
+28FAH
+1
+Valore 01h: Salvataggio impostazione orologio datario
+Value 01H: Save real time clock setting
+4
+Lovato
+electric
+Doc. 1432IGB05_20.docx
+20/05/2020
+P. 10/12
+IMPOSTAZIONE PARAMETRI
+PARAMETER SETTING
+Tramite il protocollo Modbus® e' possibile accedere
+Using the Modbus® protocol it is possible to access
+ai parametri dei menu.
+the menu parameters.
+Per interpretare correttamente la corrispondenza fra
+To correctly understand the correspondence between
+valore numerico e funzione selezionata e/o unita' di
+the numeric value and the selected function and/or
+misura, fare riferimento al manuale operativo del
+the unit of measure, please see the DCRG operating
+DCRG.
+manual.
+PROCEDURA PER LA LETTURA DEI PARAMETRI
+PROCEDURE FOR THE READING OF
+PARAMETERS
+1.
+Scrivere il valore del menu che si vuole leggere
+1.
+Write the value of the menu that you want to
+tramite la funzione 6 all'indirizzo 5000H 0
+read by using the function 6 at address
+2.
+Scrivere il valore del sottomenu (se esiste) che
+5000HO.
+si vuole leggere tramite la funzione 6
+2.
+Write the value of the submenu (if it is present)
+all'indirizzo 5001H O.
+that you want to read by using the function 6
+3.
+Scrivere il valore del parametro che si vuole
+at address 5001HO.
+leggere tramite la funzione 6 all'indirizzo
+3.
+Write the value of the parameter that you want
+5002H 0.
+to read by using the function 6 at address
+4.
+Eseguire la funzione 4 all'indirizzo 5004H, di
+5002HO
+un numero di registri appropriato alla
+4.
+Perform the function 4 at the address 5004H,
+lunghezza del parametro vedi tabella).
+with a number of registers appropriate to the
+5.
+Se si vuole leggere il parametro successivo,
+length of the parameter (see table).
+(all'interno dello stesso menu/sottomenu)
+5.
+If you want to read the next parameter (in the
+ripetere il passo 4, altrimenti eseguire il passo
+same menu/submenu) repeat step 4, otherwise
+1.
+perform step 1.
+PROCEDURA PER LA SCRITTURA DEI
+PARAMETRI
+PROCEDURE FOR THE WRITING OF
+1.
+Scrivere il valore del menu che si vuole
+PARAMETERS
+modificare tramite la funzione 6 all'indirizzo
+1.
+Write the value of the menu that you want to
+5000H
+change by using the function 6 at address
+2.
+Scrivere il valore del sottomenu (se esiste) che
+5000HO
+si vuole modificare tramite la funzione 6
+2.
+Write the value of the submenu (if it is present)
+all'indirizzo 5001HO
+that you want to change by using the function
+3.
+Scrivere il valore parametro che si vuole
+6 at address 5001HO
+modificare tramite la funzione 6 all'indirizzo
+3.
+Write the value of the parameter that you want
+5002HO
+to change by using the function 6 at address
+4.
+Eseguire la funzione 16 all'indirizzo 5004H, di
+5001HO
+un numero di registri appropriato alla
+4.
+Perform the function 16 at address 5004H,
+lunghezza del parametro.
+with a number of registers appropriate to the
+5.
+Se si vuole scrivere il parametro successivo,
+length of the parameter
+all'interno dello stesso menu/sottomenu
+5.
+If you want to write the next parameter, in the
+ripetere il passo 4, altrimenti eseguire il passo
+same menu / submenu repeat step 4, otherwise
+1, se non bisogna scrivere ulteriori parametri
+perform step 1, if you do not have to write
+eseguire il passo 6.
+additional parameters go to step 6.
+6.
+Per rendere effettivo un cambiamento nel
+6.
+To make effective the changes made to setup
+menu di setup e' necessario memorizzare i
+parameters it is necessary to store the
+valori in EEPROM, utilizzando l'apposito
+values in EEPROM, using the dedicated
+comando descritto nella tabella 9.(scrivere il
+command described in table 9.(write value 01
+valore 01 con la funzione 6 all' indirizzo
+by using function 6 at address 2F03H) and
+2F03H) e poi successivamente il valore 04
+then write value 04 again at address 2F03H.
+sempre all'indirizzo 2F03H.
+TIPO DI PARAMETRO
+NUMERO
+REGISTRI
+Testo lunghezza 6 caratteri
+3 registri
+TYPE OF PARAMETER
+NUMBER OF
+(es. M21.01.06)
+(6 byte)
+REGISTER
+Testo lunghezza 16 caratteri
+8 registri
+Text length 6 characters
+3 registers
+(es. M21.01.05)
+(16 byte)
+(ex. M25.01.06)
+(6 byte)
+Testo lunghezza 20 caratteri
+10 registri
+Text length 16 characters
+8 registers
+(es. M01.9)
+(20 byte)
+(ex. M21.01.05)
+(16 byte)
+Valore numerico < 32768
+1 registri
+Text length 20 characters
+10 registers
+(es M01.07)
+(2 byte)
+(ex. M01.9)
+(20 byte)
+Valore numerico > 32768
+2 registri
+Numeric value < 32768
+1 registers
+(es M02.07)
+(4 byte)
+(ex M01.07)
+(2 byte)
+Indirizzo IP
+2 registri
+Numeric value > 32768
+2 registers
+(es. M16.0x.06 M16.0x.07)
+(4 byte)
+(ex M02.07)
+(4 byte)
+IP address
+2 registers
+E' possibile leggere il valore del menu, sottomenu
+(ex. M16.0x.06 M16.0x.07)
+(4 byte)
+e parametro memorizzati agli indirizzi 5000H,5001H
+e 5002H utilizzando la funzione 4
+It's 'possible to read the menu, submenus, and
+parameter stored at the addresses 5000H, 5001H
+Vedere esempio seguente
+and 5002H by using the function 4
+See the following example
+Lovato
+electric
+Doc. 1432IGB05_20.docx
+20/05/2020
+P. 11/12
+ESEMPIO I EXAMPLE
+Impostare a 200 il valore del parametro P02.01 (Primario TA)
+Set to 200 the value of parameter P02.01 (CT primary)
+Passo 1 :Selezione menu 02.
+Step 1 :Select menu 02.
+MASTER Funzione / Function
+= 6
+Indirizzo / Address
+= 5000H 5000H 0001H =4FFFH)
+Valore / Value
+= 2 (02H)
+01
+06
+4F
+FF
+00
+02
+2E
+EF
+DCRG
+Funzione / Function
+=6
+Indirizzo / Address
+= 5000H 5000H 0001H =4FFFH)
+Valore Value
+= 4 (04H)
+01
+06
+4F
+FF
+00
+02
+2E
+EF
+(Nota: in questo caso di esempio non è necessaria impostazione del sotto-menu all'indirizzo 5001)
+(Note: In this example it is not necessary to set the sub-menu number at address 5001)
+Passo 2 :Impostazione parametro 01.
+Step 2 :Set parameter 01.
+MASTER
+Funzione / Function
+= 6
+Indirizzo / Address
+= 5002H 5002H 0001H =5001H)
+Valore / Value
+= (01H)
+01
+06
+50
+01
+00
+01
+08
+CA
+DCRG
+Funzione / Function
+= 6
+Indirizzo / Address
+= 5002H 5002H 0001H =5001H)
+Valore Value
+= 2 (02H)
+01
+06
+50
+01
+00
+01
+08
+CA
+Passo 3 :Impostazione valore 200.
+Step 3 :Set value 200.
+MASTER
+Funzione / Function
+= 16 (10H)
+Indirizzo / Address
+= 5004H ( 5004H 0001H =5003H)
+Nr. registri / Nr. register = 1 (01H)
+Nr. byte / Nr. bytes
+= 2 (02H)
+Valore / Value
+= 200 (000000C8H)
+01
+10
+50
+03
+00
+01
+02
+00
+C8
+F7
+F0
+DCRG
+Funzione / Function
+= 16 (10H)
+Indirizzo / Address
+= 5004H 5004H 0001H =5003H)
+Valore / Value
+= 2 (02H)
+01
+10
+50
+03
+00
+01
+E0
+C9
+Passo 4: Salavataggio eeprom.
+Step 4: Save eeprom.
+MASTER Funzione / Function
+= 6 (06H)
+Indirizzo / Address
+= 2F03H (2F03H 0001H =2F02H)
+Valore Value
+= 1 (01H)
+01
+6
+2F
+02
+00
+01
+E1
+1E
+DCRG
+Nessuna risposta/No answer
+Passo 5: Riavvio.
+Step 5: Reboot.
+MASTER
+Funzione / Function
+= 6 (06H)
+Indirizzo / Address
+= 2F03H (2F03H 0001H =2F02H)
+Valore Value
+= 4 (04H)
+01
+6
+2F
+02
+00
+04
+21
+1D
+DCRG
+Nessuna risposta/No answer
+Lovato
+electric
+Doc. 1432IGB05_20.docx
+20/05/2020
+P. 12/12
