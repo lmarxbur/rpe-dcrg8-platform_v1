@@ -180,10 +180,10 @@ def poll_device(device):
                 "reactive_power_total": (10, True, 1),
                 #Undocumented Register "apparent_power_total": (5384, False, 1),
 
-
-                "voltage_l1": (64, True, 10),
-                "voltage_l2": (66, True, 10),
-                "voltage_l3": (68, True, 10),
+                #moved to Stryker_Voltage_THD lambda
+                # "voltage_l1": (64, True, 10),
+                # "voltage_l2": (66, True, 10),
+                # "voltage_l3": (68, True, 10),
 
                 "current_l1": (70, True, 1000),
                 "current_l2": (72, True, 1000),
@@ -206,28 +206,28 @@ def poll_device(device):
 
 
             # ---------- THD REGISTERS ----------
+            #moved to Stryker_Voltage_THD lambda
+            # thd_regs = {
+            #     "voltage_thd_l1": (11296, False, 10),
+            #     "voltage_thd_l2": (11344, False, 10),
+            #     "voltage_thd_l3": (11392, False, 10),
 
-            thd_regs = {
-                "voltage_thd_l1": (11296, False, 10),
-                "voltage_thd_l2": (11344, False, 10),
-                "voltage_thd_l3": (11392, False, 10),
+            #     "current_thd_l1": (11440, False, 10),
+            #     "current_thd_l2": (11488, False, 10),
+            #     "current_thd_l3": (11536, False, 10),
+            # }
 
-                "current_thd_l1": (11440, False, 10),
-                "current_thd_l2": (11488, False, 10),
-                "current_thd_l3": (11536, False, 10),
-            }
+            # for k, (addr, signed, scale) in thd_regs.items():
 
-            for k, (addr, signed, scale) in thd_regs.items():
+            #     val = safe_read(
+            #         lambda addr=addr, signed=signed:
+            #         read_input_16(client, addr, signed)
+            #     )
 
-                val = safe_read(
-                    lambda addr=addr, signed=signed:
-                    read_input_16(client, addr, signed)
-                )
+            #     if val is not None:
+            #         data[k] = val / scale
 
-                if val is not None:
-                    data[k] = val / scale
-
-                time.sleep(0.05)
+            #     time.sleep(0.05)
 
             # ---------- HOLDING REGISTERS ----------
 
