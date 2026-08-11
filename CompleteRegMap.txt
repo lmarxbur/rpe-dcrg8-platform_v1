@@ -1,0 +1,200 @@
+Lovato DCRG8 Modbus Register Map (Cleaned / Translated)
+Measurement Registers (Input Registers - Function 04)
+Address	Description	Scaling	Format
+0000H	Total Power Factor (Cos φ)	Value / 1000	Signed Long
+0002H	Sin φ	Value / 1000	Signed Long
+0004H	Tan φ	Value / 1000	Signed Long
+0006H	Equivalent Voltage	V / 10	Signed Long
+0008H	Equivalent Current	A / 1000	Signed Long
+000AH	Reactive Power	Var	Signed Long
+0012H	Delta Var	Var	Signed Long
+Energy Registers
+Address	Description	Scaling
+0016H	Total Imported Active Energy	kWh / 10
+0018H	Total Inductive Reactive Energy	kvarh / 10
+001AH	Total Apparent Energy	kVAh / 10
+001CH	Total Exported Active Energy	kWh / 10
+001EH	Total Capacitive Reactive Energy	kvarh / 10
+Phase Voltage / Current Registers
+Address	Description	Scaling
+0040H	L1 Voltage	V / 10
+0042H	L2 Voltage	V / 10
+0044H	L3 Voltage	V / 10
+0046H	L1 Current	A / 1000
+0048H	L2 Current	A / 1000
+004AH	L3 Current	A / 1000
+
+Line-to-line:
+
+Address	Description
+004CH	L1-L2 Voltage
+004EH	L2-L3 Voltage
+0050H	L3-L1 Voltage
+Per-Phase Power Factor
+Address	Description
+0052H	Phase 1 Cos φ
+0054H	Phase 2 Cos φ
+0056H	Phase 3 Cos φ
+Active / Apparent Power
+Address	Description	Scaling
+1500H	Total Active Power	W
+1502H	Phase 1 Active Power	W
+1504H	Phase 2 Active Power	W
+1506H	Phase 3 Active Power	W
+1508H	Total Apparent Power	VA
+150AH	Phase 1 Apparent Power	VA
+150CH	Phase 2 Apparent Power	VA
+150EH	Phase 3 Apparent Power	VA
+Capacitor Step Information
+Address	Description
+1300H	Reactive Power of Step i
+1200H	Step Insertion Time
+1100H	Step Insertion Count
+CAP / IND Status
+Address	Description	Values
+2001H	Current CAP-IND Flag	0 = Capacitive, 1 = Inductive
+2002H	Phase 1 CAP-IND Flag	0 = Capacitive, 1 = Inductive
+2003H	Phase 2 CAP-IND Flag	0 = Capacitive, 1 = Inductive
+2004H	Phase 3 CAP-IND Flag	0 = Capacitive, 1 = Inductive
+2005H	Weekly Average PF	/1000
+Step Status
+Address	Description
+2110H	Step Status
+
+Values:
+
+1 = Step inserted
+2 = Step not configured
+3 = Step moving
+Temperature
+Address	Description	Scaling
+202AH	Current Temperature	Value / 10
+202BH	Maximum Temperature	Value / 10
+Harmonic / THD Registers
+Voltage THD
+Address	Description
+2C20H	L1 Voltage THD
+2C50H	L2 Voltage THD
+2C80H	L3 Voltage THD
+Current THD
+Address	Description
+2CB0H	L1 Current THD
+2CE0H	L2 Current THD
+2D10H	L3 Current THD
+Event Log ⭐
+
+This is the interesting rabbit hole. 😂
+
+The document shows that the DCRG8 has an event pointer/counter:
+
+Address	Description
+5030H	Event Pointer / Event Counter
+
+The procedure:
+
+Read register 5030H using Function 04.
+The returned value contains:
+MSB = event counter
+LSB = pointer to last stored event
+Write the desired event number back to 5030H using Function 06.
+Read event text from 5032H using Function 04.
+
+The event description requires reading 43 registers from 5032H. The returned data contains:
+
+first 10 bytes = date
+byte 11 = separator
+bytes 12–19 = time
+byte 20 = separator
+remaining bytes = event text
+
+
+Alarm Status
+Alarm Status Register
+Address	Description	Words	Format
+1400H	Alarm Status	2	Unsigned Long
+
+The alarm status register contains active alarm conditions as bit flags.
+
+Alarm Bit Definitions
+Bit	Code	Description
+0	A01	Under Compensation
+1	A02	Over Compensation
+2	A03	Low Current
+3	A04	High Current
+4	A05	Low Voltage
+5	A06	High Voltage
+6	A07	Overtemperature
+7	A08	Capacitor Overload
+8	A09	No-Voltage Release
+9	A10	Step Failure
+10	A11	Harmonic Event - High Current
+11	A12	Harmonic Event - High THD
+12	A13	5th Harmonic
+13	A14	7th Harmonic
+14	A15	11th Harmonic
+15	A16	13th Harmonic
+16	A17	Protection 1 High Temperature
+17	A18	Protection 2 High Temperature
+18	A19	Link Error
+19-26	UA1-UA8	User Alarms
+27-29	Service 1-3	Maintenance Expired
+Event Log
+Event Pointer
+Address	Description
+5030H	Event Pointer / Event Counter
+
+Read with Function 04.
+
+Returned value:
+
+Field	Description
+MSB	Event counter
+LSB	Pointer to last stored event
+
+Event storage:
+
+Maximum events: 250
+Buffer type: Circular
+Event Retrieval
+Read 5030H
+Write desired event number to 5030H using Function 06
+Read event text from 5032H
+
+Event data length:
+
+43 registers
+
+Format:
+
+Bytes	Description
+1-10	Date
+11	Separator
+12-19	Time
+20	Separator
+Remaining	Event text
+Event Classes
+Class	Description
+0	Power
+2	Alarm
+3	Limit
+4	Remote
+5	Communication
+7	Setup
+8	Command Menu
+9	Password
+10	Configuration
+
+Alarm event types:
+
+Type	Description
+0	Alarm Begin
+1	Alarm End
+2	Alarm Reset
+
+And I'd add one small note at the end:
+
+Alarm status indicates controller conditions. Event history provides historical context. Root-cause interpretation may require correlation with electrical measurements and operating conditions.
+
+That last sentence is actually important because it prevents someone later reading your document and thinking:
+
+"A03 exists, therefore the plant failed."
