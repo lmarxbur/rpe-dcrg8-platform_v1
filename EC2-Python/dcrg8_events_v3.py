@@ -1,3 +1,4 @@
+#dcrg8_events_v3.py EC2 events ingester
 import os
 import json
 import time
