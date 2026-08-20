@@ -225,6 +225,7 @@ def ingest_to_s3(device, data):
 
     record = {
         "device": device["name"],
+        "site_name": device.get("site_name"),
         "timestamp": ts.strftime("%Y-%m-%d %H:%M:%S"),
 
         "hour_bucket": ts.strftime("%Y-%m-%d %H:00:00"),
