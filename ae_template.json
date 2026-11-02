@@ -1,0 +1,119 @@
+"specificationVersion": "jobtemplate-2023-09",
+  "name": "After Effects Render & Encode",
+  "description": "Service-managed After Effects render using aerender.exe with local frame sequence output, followed by FFmpeg encoding and S3 upload",
+  "parameterDefinitions": [
+    {
+      "name": "ProjectFile",
+      "type": "PATH",
+      "objectType": "FILE",
+      "dataFlow": "IN",
+      "userInterface": {
+        "control": "CHOOSE_INPUT_FILE",
+        "label": "Project File",
+        "groupLabel": "Project"
+      },
+      "description": "After Effects project (.aep), relative to the job attachment root"
+    },
+    {
+      "name": "Comp",
+      "type": "STRING",
+      "userInterface": {
+        "control": "LINE_EDIT",
+        "label": "Composition",
+        "groupLabel": "Project"
+      },
+      "description": "Composition name to render"
+    },
+    {
+      "name": "OutputPath",
+      "type": "PATH",
+      "objectType": "FILE",
+      "dataFlow": "OUT",
+      "userInterface": {
+        "control": "CHOOSE_OUTPUT_FILE",
+        "label": "Output File",
+        "groupLabel": "Output"
+      },
+      "description": "Output location anchor. Frames will be written beside this path."
+    },
+    {
+      "name": "S3OutputPrefix",
+      "type": "STRING",
+      "default": "s3://proto-render-uploads/after-effects/output/",
+      "userInterface": {
+        "control": "LINE_EDIT",
+        "label": "S3 Output Prefix",
+        "groupLabel": "Output"
+      },
+      "description": "Target S3 URI prefix for the encoded video"
+    },
+    {
+      "name": "StartFrame",
+      "type": "INT",
+      "default": 0,
+      "userInterface": {
+        "control": "SPIN_BOX",
+        "label": "Start Frame",
+        "groupLabel": "Frame Range"
+      },
+      "description": "First frame to render (inclusive)"
+    },
+    {
+      "name": "EndFrame",
+      "type": "INT",
+      "default": 10,
+      "userInterface": {
+        "control": "SPIN_BOX",
+        "label": "End Frame",
+        "groupLabel": "Frame Range"
+      },
+      "description": "Last frame to render (inclusive)"
+    },
+    {
+      "name": "Framerate",
+      "type": "INT",
+      "default": 30,
+      "userInterface": {
+        "control": "SPIN_BOX",
+        "label": "Framerate",
+        "groupLabel": "Encoding"
+      },
+      "description": "Output video framerate for FFmpeg"
+    }
+  ],
+  "steps": [
+    {
+      "name": "Render",
+      "script": {
+        "actions": {
+          "onRun": {
+            "command": "powershell.exe",
+            "args": [
+              "-NoProfile",
+              "-Command",
+              "$outputFile='{{Param.OutputPath}}'; $outputDir=Split-Path -Parent $outputFile; New-Item -ItemType Directory -Force -Path \"$outputDir\" | Out-Null; $frameOutput=Join-Path \"$outputDir\" 'frame_[#####].png'; $ae = Get-ChildItem 'C:\\Program Files\\Adobe' -Recurse -Filter aerender.exe -ErrorAction SilentlyContinue | Select-Object -First 1; if ($null -eq $ae) { throw 'aerender.exe not found' }; Write-Host ('Using AE renderer: ' + $ae.FullName); Write-Host ('Frame output: ' + $frameOutput); & $ae.FullName -project '{{Param.ProjectFile}}' -comp '{{Param.Comp}}' -output \"$frameOutput\" -s {{Param.StartFrame}} -e {{Param.EndFrame}} -close DO_NOT_SAVE_CHANGES -sound OFF"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "EncodeAndUpload",
+      "dependsOn": [
+        "Render"
+      ],
+      "script": {
+        "actions": {
+          "onRun": {
+            "command": "powershell.exe",
+            "args": [
+              "-NoProfile",
+              "-Command",
+              "$outputFile='{{Param.OutputPath}}'; $outputDir=Split-Path -Parent $outputFile; $mp4Path=Join-Path $outputDir "$env:DEADLINE_JOB_ID.mp4"; $framePattern=Join-Path $outputDir 'frame_%05d.png'; $ffmpegPath='C:\\Program Files\\ffmpeg\\ffmpeg.exe'; if (!(Test-Path $ffmpegPath)) { throw 'ffmpeg.exe not found in C:\\Program Files\\ffmpeg\\' }; Write-Host 'Starting FFmpeg encoding...'; & $ffmpegPath -y -framerate {{Param.Framerate}} -start_number {{Param.StartFrame}} -i \"$framePattern\" -c:v libx264 -pix_fmt yuv420p \"$mp4Path\"; if ($LASTEXITCODE -ne 0) { throw 'FFmpeg encoding failed' }; Write-Host 'Uploading to S3...'; aws s3 cp \"$mp4Path\" '{{Param.S3OutputPrefix}}'; if ($LASTEXITCODE -ne 0) { throw 'S3 upload failed' }; Write-Host 'Encoding and upload completed successfully.'"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
