@@ -81,6 +81,7 @@ def read_holding_16(client, addr):
 
     return None
 
+
 # ================= DEVICE PREFLIGHT =================
 
 def preflight_device(device):
@@ -119,7 +120,6 @@ def preflight_device(device):
         client.close()
 
 
-
 # ================= DEVICE POLL =================
 
 def poll_device(device):
@@ -137,7 +137,6 @@ def poll_device(device):
             print(f"[ERROR] {device['name']} connect failed")
             return None
 
- 
         # ---------------- INPUT REGISTERS ----------------
 
         input_regs = {
@@ -146,16 +145,12 @@ def poll_device(device):
             "eq_voltage": (6, True, 10),
             "eq_current": (8, True, 1000),
 
-    # Updated 2026/07/25:
-    # Lovato documented registers after lab validation
+            # Updated 2026/07/25:
+            # Lovato documented registers after lab validation
             "active_power_total": (5376, True, 1),
             "reactive_power_total": (10, True, 1),
-    #moved to Stryker_Voltage_THD lambda
 
-    #        "voltage_l1": (64, True, 10),
-    #        "voltage_l2": (66, True, 10),
-    #        "voltage_l3": (68, True, 10),
-
+            # Voltage registers moved to Stryker_Voltage_THD Lambda
             "current_l1": (70, True, 1000),
             "current_l2": (72, True, 1000),
             "current_l3": (74, True, 1000),
@@ -185,10 +180,9 @@ def poll_device(device):
         # Disabled: register 38 appears to be incorrect for DCRG8.
         # Re-enable only after the authoritative register is confirmed.
 
-
-        #freq = safe_read(lambda: read_input_32(client, 38, signed=False))
-        #if freq is not None:
-        #    data["frequency_hz"] = freq / 100.0
+        # freq = safe_read(lambda: read_input_32(client, 38, signed=False))
+        # if freq is not None:
+        #     data["frequency_hz"] = freq / 100.0
 
         # ---------------- CAP FLAGS ----------------
 
@@ -218,19 +212,17 @@ def poll_device(device):
             for phase in ["l1", "l2", "l3"]
             if data.get(f"cap_{phase}", 0) == 0
         )
-        
+
         Q_uncorrected = Q + Q_cap_total
 
         if P > 100 and pf_measured is not None:
             pf_uncorrected = P / math.sqrt(P**2 + Q_uncorrected**2)
             pf_corrected = P / math.sqrt(P**2 + Q**2)
 
-            
             data["pf_uncorrected_calc"] = round(pf_uncorrected, 3)
             data["pf_corrected_calc"] = round(pf_corrected, 3)
             data["pf_improvement"] = round(pf_measured - pf_uncorrected, 3)
         else:
-            
             data["pf_uncorrected_calc"] = None
             data["pf_corrected_calc"] = None
             data["pf_improvement"] = None
@@ -243,8 +235,6 @@ def poll_device(device):
 
     finally:
         client.close()
-
-
 
 
 # ================= FIREHOSE INGEST =================
@@ -276,10 +266,6 @@ def ingest_to_firehose(device, data):
     print(f"[{device['name']}] FIREHOSE OK")
 
 
-
-
-
-
 # ================= LAMBDA HANDLER =================
 
 def lambda_handler(event, context):
@@ -292,22 +278,28 @@ def lambda_handler(event, context):
     results = []
     reachable_devices = []
 
-   # ---------------- PREFLIGHT ----------------
+    # ---------------- PREFLIGHT ----------------
 
     print("[INFO] Starting device preflight")
 
     MAX_PREFLIGHT_ATTEMPTS = 6
     retry_interval = 30
+    final_unreachable = []
 
     for attempt in range(1, MAX_PREFLIGHT_ATTEMPTS + 1):
 
         print(f"[PREFLIGHT] Attempt {attempt}/{MAX_PREFLIGHT_ATTEMPTS}")
 
         all_reachable = True
+        unreachable = []
 
         for device in devices:
             if not preflight_device(device):
                 all_reachable = False
+                unreachable.append(device["name"])
+
+        # Keep only the failures from this attempt.
+        final_unreachable = unreachable
 
         if all_reachable:
             reachable_devices = list(devices)
@@ -326,6 +318,11 @@ def lambda_handler(event, context):
             time.sleep(retry_interval)
 
     else:
+        print(
+            "[FINAL PREFLIGHT FAILURE] "
+            + ", ".join(final_unreachable)
+        )
+
         print(
             "[ERROR] Preflight failed after "
             f"{MAX_PREFLIGHT_ATTEMPTS} attempts. "
@@ -353,7 +350,7 @@ def lambda_handler(event, context):
                 "status": "failed"
             })
 
-        # pacing between devices
+        # Pacing between devices
         time.sleep(DEVICE_POLL_GAP_SEC)
 
     return {"results": results}
